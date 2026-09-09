@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
 website:
-  title: "website"
+  title: "Rohan Chakkadath"
   navbar:
     left:
       - href: index.qmd
@@ -17,6 +17,8 @@ format:
       - brand
     css: styles.css
     toc: true
-
+about:
+  template: jolla
+  image: images/profile.jpg
 
 
