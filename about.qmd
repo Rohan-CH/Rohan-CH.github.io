@@ -1,11 +1,10 @@
 ---
-title: "Rohan Chakkadath"
-
+title: "About"
 ---
 
 
 **What I Do:**
-I love solving problems, domain irrespective. Thats what got me into computers in the first place. With a graduation focused in Computer Science and Engineering, I have over 6+ years managing entriprise deployments across Asia, the Middel east and Africa. I also have an independent fitness product suite venture, on the side. Because, I love lifting weights.
+I love solving problems, domain irrespective. Thats what got me into computers in the first place. With a graduation focused in Computer Science and Engineering, I have over 6+ years managing entriprise deployments across Asia, the Middle east and Africa. I also have an independent fitness product suite venture, on the side. Because, I love lifting weights.
 
 **Why MDS:**
 I was always fascinated by the idea that solving problems make learning easier. I love working with data and solving data problems and here I am, sitting down a diverse cohort of 35+ nationalities.
