@@ -5,3 +5,5 @@ about:
   image: images/profile.jpg
 ---
 *I climb alot of mountains for somebody who is scared of heights.*
+
+Here meet new people and write new code.
