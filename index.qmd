@@ -4,6 +4,6 @@ about:
   template: jolla
   image: images/profile.jpg
 ---
-*I climb alot of mountains for somebody who is scared of heights.*
+*I climb a lot of mountains for somebody who is scared of heights.*
 
 Here to meet new people and write new code.
