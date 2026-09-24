@@ -19,6 +19,7 @@ The [Gapminder dataset](https://www.gapminder.org/data/) provides country-level 
 #| echo: true
 #| warning: false
 #| message: false
+#| 
 
 library(gapminder)
 library(dplyr)
@@ -30,7 +31,7 @@ glimpse(gapminder)
 
 ```{r}
 #| echo: true
-#| code-fold: true
+#| code-fold: false
 
 summary_2007 <- gapminder |>
   filter(year == 2007) |>
@@ -51,6 +52,7 @@ knitr::kable(summary_2007, digits = 2, caption = "2007 Continental Summary")
 ```{r}
 #| echo: true
 #| label: fig-life-exp-trend
+#| code-fold: false
 #| fig-cap: "Global median life expectancy progression from 1952 to 2007."
 
 yearly_trend <- gapminder |>
@@ -76,7 +78,7 @@ grid()
 #| echo: true
 #| warning: false
 #| message: false
-#| code-fold: true
+#| code-fold: false
 
 library(ggplot2)
 

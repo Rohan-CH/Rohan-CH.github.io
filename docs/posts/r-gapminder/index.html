@@ -237,8 +237,6 @@ $ gdpPercap &lt;dbl&gt; 779.4453, 820.8530, 853.1007, 836.1971, 739.9811, 786.11
 <section id="continental-overview-in-2007" class="level2">
 <h2 class="anchored" data-anchor-id="continental-overview-in-2007">Continental Overview in 2007</h2>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>summary_2007 <span class="ot">&lt;-</span> gapminder <span class="sc">|&gt;</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2007</span>) <span class="sc">|&gt;</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(continent) <span class="sc">|&gt;</span></span>
@@ -251,7 +249,6 @@ $ gdpPercap &lt;dbl&gt; 779.4453, 820.8530, 853.1007, 836.1971, 739.9811, 786.11
 <span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(median_life_exp))</span>
 <span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(summary_2007, <span class="at">digits =</span> <span class="dv">2</span>, <span class="at">caption =</span> <span class="st">"2007 Continental Summary"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <caption>2007 Continental Summary</caption>
@@ -346,8 +343,6 @@ Figure&nbsp;1: Global median life expectancy progression from 1952 to 2007.
 <section id="visualizing-continental-life-expectancy-2007" class="level3">
 <h3 class="anchored" data-anchor-id="visualizing-continental-life-expectancy-2007">Visualizing Continental Life Expectancy (2007)</h3>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(summary_2007, <span class="fu">aes</span>(<span class="at">x =</span> continent, <span class="at">y =</span> median_life_exp, <span class="at">fill =</span> continent)) <span class="sc">+</span></span>
@@ -360,7 +355,6 @@ Figure&nbsp;1: Global median life expectancy progression from 1952 to 2007.
 <span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
 <span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">"Set2"</span>) <span class="sc">+</span></span>
 <span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">

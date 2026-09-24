@@ -32,7 +32,7 @@ Comparing median life expectancy and GDP per capita across continents in the mos
 
 ```{python}
 #| echo: true
-#| code-fold: true
+#| code-fold: false
 
 recent_summary = (
     gapminder[gapminder["year"] == 2007]
@@ -54,6 +54,7 @@ recent_summary
 
 ```{python}
 #| echo: true
+#| code-fold: false
 
 comparison = (
     gapminder[gapminder["year"].isin([1952, 2007])]
@@ -74,7 +75,7 @@ Every continent experienced double-digit gains in average life expectancy betwee
 ```{python}
 #| echo: true
 #| warning: false
-#| code-fold: true
+#| code-fold: false
 
 import matplotlib.pyplot as plt
 
