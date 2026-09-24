@@ -1,0 +1,27 @@
+---
+title: "Python Gapminder Analysis"
+jupyter: python3
+---
+
+## Environment Check
+
+To confirm this post is rendering using the isolated virtual environment:
+
+```{python}
+import sys
+print(sys.executable)
+```
+
+## Data Overview
+
+For this post, I am analyzing global life expectancy. The dataset used in this analysis is the Gapminder dataset, which provides historical data on life expectancy, GDP per capita, and population by country.
+
+```{python}
+#| echo: true
+#| warning: false
+
+import pandas as pd
+from gapminder import gapminder
+
+gapminder.head()
+```

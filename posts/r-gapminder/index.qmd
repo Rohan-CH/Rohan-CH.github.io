@@ -1,0 +1,25 @@
+---
+title: "R Gapminder Analysis"
+---
+
+## Environment Check
+
+To confirm this post is rendering using the isolated `renv` project library instead of the global R installation:
+
+```{r}
+.libPaths()
+```
+
+## Data Overview
+
+For this post, I am analyzing global life expectancy. The dataset used in this analysis is the Gapminder dataset, which provides historical data on life expectancy, GDP per capita, and population by country.
+
+```{r}
+#| echo: true
+#| warning: false
+
+library(gapminder)
+library(dplyr)
+
+head(gapminder)
+```

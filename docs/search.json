@@ -4,7 +4,7 @@
     "href": "blog.html",
     "title": "Blog",
     "section": "",
-    "text": "My first weeks in MDS\n\n\n\n\n\n\n\n\nSep 10, 2026\n\n\nRohan Chakkadath\n\n\n\n\n\nNo matching items"
+    "text": "Python Gapminder Analysis\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nR Gapminder Analysis\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMy first weeks in MDS\n\n\n\n\n\n\n\n\nSep 10, 2026\n\n\nRohan Chakkadath\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",
@@ -26,5 +26,47 @@
     "title": "About",
     "section": "",
     "text": "What I Do: I love solving problems, domain irrespective. Thats what got me into computers in the first place. With a graduation focused in Computer Science and Engineering, I have over 6+ years managing entriprise deployments across Asia, the Middle east and Africa. I also have an independent fitness product suite venture, on the side. Because, I love lifting weights.\nWhy MDS: I was always fascinated by the idea that solving problems make learning easier. I love working with data and solving data problems.\nOutside of MDS: I like lifting big weights and listening to alot of (questionable) music."
+  },
+  {
+    "objectID": "posts/python-gapminder/index.html",
+    "href": "posts/python-gapminder/index.html",
+    "title": "Python Gapminder Analysis",
+    "section": "",
+    "text": "To confirm this post is rendering using the isolated virtual environment:\n\nimport sys\nprint(sys.executable)\n\n/Users/rohan/Documents/MDS/521_platforms-dsci/lab/DSCI_521-milestone_3/Rohan-CH.github.io/.venv/bin/python"
+  },
+  {
+    "objectID": "posts/python-gapminder/index.html#environment-check",
+    "href": "posts/python-gapminder/index.html#environment-check",
+    "title": "Python Gapminder Analysis",
+    "section": "",
+    "text": "To confirm this post is rendering using the isolated virtual environment:\n\nimport sys\nprint(sys.executable)\n\n/Users/rohan/Documents/MDS/521_platforms-dsci/lab/DSCI_521-milestone_3/Rohan-CH.github.io/.venv/bin/python"
+  },
+  {
+    "objectID": "posts/python-gapminder/index.html#data-overview",
+    "href": "posts/python-gapminder/index.html#data-overview",
+    "title": "Python Gapminder Analysis",
+    "section": "Data Overview",
+    "text": "Data Overview\nFor this post, I am analyzing global life expectancy. The dataset used in this analysis is the Gapminder dataset, which provides historical data on life expectancy, GDP per capita, and population by country.\n\nimport pandas as pd\nfrom gapminder import gapminder\n\ngapminder.head()\n\n\n\n\n\n\n\n\ncountry\ncontinent\nyear\nlifeExp\npop\ngdpPercap\n\n\n\n\n0\nAfghanistan\nAsia\n1952\n28.801\n8425333\n779.445314\n\n\n1\nAfghanistan\nAsia\n1957\n30.332\n9240934\n820.853030\n\n\n2\nAfghanistan\nAsia\n1962\n31.997\n10267083\n853.100710\n\n\n3\nAfghanistan\nAsia\n1967\n34.020\n11537966\n836.197138\n\n\n4\nAfghanistan\nAsia\n1972\n36.088\n13079460\n739.981106"
+  },
+  {
+    "objectID": "posts/r-gapminder/index.html",
+    "href": "posts/r-gapminder/index.html",
+    "title": "R Gapminder Analysis",
+    "section": "",
+    "text": "To confirm this post is rendering using the isolated renv project library instead of the global R installation:\n\n.libPaths()\n\n[1] \"/Users/rohan/Documents/MDS/521_platforms-dsci/lab/DSCI_521-milestone_3/Rohan-CH.github.io/renv/library/macos/R-4.6/aarch64-apple-darwin23\"\n[2] \"/Users/rohan/Library/Caches/org.R-project.R/R/renv/sandbox/macos/R-4.6/aarch64-apple-darwin23/46003b10\""
+  },
+  {
+    "objectID": "posts/r-gapminder/index.html#environment-check",
+    "href": "posts/r-gapminder/index.html#environment-check",
+    "title": "R Gapminder Analysis",
+    "section": "",
+    "text": "To confirm this post is rendering using the isolated renv project library instead of the global R installation:\n\n.libPaths()\n\n[1] \"/Users/rohan/Documents/MDS/521_platforms-dsci/lab/DSCI_521-milestone_3/Rohan-CH.github.io/renv/library/macos/R-4.6/aarch64-apple-darwin23\"\n[2] \"/Users/rohan/Library/Caches/org.R-project.R/R/renv/sandbox/macos/R-4.6/aarch64-apple-darwin23/46003b10\""
+  },
+  {
+    "objectID": "posts/r-gapminder/index.html#data-overview",
+    "href": "posts/r-gapminder/index.html#data-overview",
+    "title": "R Gapminder Analysis",
+    "section": "Data Overview",
+    "text": "Data Overview\nFor this post, I am analyzing global life expectancy. The dataset used in this analysis is the Gapminder dataset, which provides historical data on life expectancy, GDP per capita, and population by country.\n\nlibrary(gapminder)\nlibrary(dplyr)\n\nhead(gapminder)\n\n# A tibble: 6 × 6\n  country     continent  year lifeExp      pop gdpPercap\n  &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;\n1 Afghanistan Asia       1952    28.8  8425333      779.\n2 Afghanistan Asia       1957    30.3  9240934      821.\n3 Afghanistan Asia       1962    32.0 10267083      853.\n4 Afghanistan Asia       1967    34.0 11537966      836.\n5 Afghanistan Asia       1972    36.1 13079460      740.\n6 Afghanistan Asia       1977    38.4 14880372      786."
   }
 ]
