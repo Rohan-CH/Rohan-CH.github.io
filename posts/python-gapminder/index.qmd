@@ -1,22 +1,18 @@
 ---
-title: "Python Gapminder Analysis"
+title: "Global Life Expectancy Trends (Python)"
 jupyter: python3
-author: "Rohan Chakkadath"
-date: 2026-09-23
 ---
 
-## Environment Check
-
-To confirm this post is rendering using the isolated virtual environment:
+## Environment Verification
 
 ```{python}
 import sys
 print(sys.executable)
 ```
 
-## Data Overview
+## Dataset Overview
 
-For this post, I am analyzing global life expectancy. The dataset used in this analysis is the Gapminder dataset, which provides historical data on life expectancy, GDP per capita, and population by country.
+The Gapminder dataset tracks historical socio-economic metrics across countries and continents between 1952 and 2007. Key variables include life expectancy (`lifeExp`), population (`pop`), and GDP per capita (`gdpPercap`).
 
 ```{python}
 #| echo: true
@@ -26,4 +22,64 @@ import pandas as pd
 from gapminder import gapminder
 
 gapminder.head()
+```
+
+## Regional Summary (2007)
+
+Comparing median life expectancy and GDP per capita across continents in the most recent survey year:
+
+```{python}
+#| echo: true
+#| code-fold: true
+
+recent_summary = (
+    gapminder[gapminder["year"] == 2007]
+    .groupby("continent")
+    .agg(
+        median_life_exp=("lifeExp", "median"),
+        median_gdp=("gdpPercap", "median"),
+        total_pop=("pop", "sum"),
+        country_count=("country", "count")
+    )
+    .sort_values(by="median_life_exp", ascending=False)
+    .reset_index()
+)
+
+recent_summary
+```
+
+## 55-Year Progress (1952 vs 2007)
+
+```{python}
+#| echo: true
+
+comparison = (
+    gapminder[gapminder["year"].isin([1952, 2007])]
+    .groupby(["continent", "year"])["lifeExp"]
+    .mean()
+    .unstack()
+    .rename(columns={1952: "life_exp_1952", 2007: "life_exp_2007"})
+)
+
+comparison["gain_years"] = comparison["life_exp_2007"] - comparison["life_exp_1952"]
+comparison.round(2)
+```
+
+Every continent experienced double-digit gains in average life expectancy between 1952 and 2007, with Asia demonstrating the largest absolute increase over that span.
+
+### Visualizing Regional Life Expectancy (2007)
+
+```{python}
+#| echo: true
+#| warning: false
+#| code-fold: true
+
+import matplotlib.pyplot as plt
+
+fig, ax = plt.subplots(figsize=(8, 5))
+ax.bar(recent_summary['continent'], recent_summary['median_life_exp'], color='royalblue')
+ax.set_title('Median Life Expectancy by Continent (2007)')
+ax.set_ylabel('Median Life Expectancy (years)')
+ax.set_xlabel('Continent')
+plt.show()
 ```

@@ -1,27 +1,89 @@
 ---
-title: "R Gapminder Analysis"
-author: "Rohan Chakkadath"
-date: 2026-09-23
+title: "Global Life Expectancy Trends (R)"
 ---
 
-## Environment Check
-
-To confirm this post is rendering using the isolated `renv` project library instead of the global R installation:
+## Environment Verification
 
 ```{r}
 .libPaths()
 ```
 
-## Data Overview
+## Dataset Overview
 
-For this post, I am analyzing global life expectancy. The dataset used in this analysis is the Gapminder dataset, which provides historical data on life expectancy, GDP per capita, and population by country.
+The Gapminder dataset provides country-level records over 5-year intervals from 1952 to 2007.
 
 ```{r}
 #| echo: true
 #| warning: false
+#| message: false
 
 library(gapminder)
 library(dplyr)
 
-head(gapminder)
+glimpse(gapminder)
+```
+
+## Continental Overview in 2007
+
+```{r}
+#| echo: true
+#| code-fold: true
+
+summary_2007 <- gapminder |>
+  filter(year == 2007) |>
+  group_by(continent) |>
+  summarise(
+    median_life_exp = median(lifeExp),
+    median_gdp = median(gdpPercap),
+    total_population = sum(as.numeric(pop)),
+    num_countries = n()
+  ) |>
+  arrange(desc(median_life_exp))
+
+knitr::kable(summary_2007, digits = 2, caption = "2007 Continental Summary")
+```
+
+## Longitudinal Life Expectancy Trajectory
+
+```{r}
+#| echo: true
+#| fig-cap: "Global median life expectancy progression from 1952 to 2007."
+
+yearly_trend <- gapminder |>
+  group_by(year) |>
+  summarise(median_life_exp = median(lifeExp))
+
+plot(
+  yearly_trend$year,
+  yearly_trend$median_life_exp,
+  type = "b",
+  pch = 19,
+  col = "navy",
+  xlab = "Year",
+  ylab = "Median Life Expectancy (Years)",
+  main = "Global Median Life Expectancy (1952 - 2007)"
+)
+grid()
+```
+
+### Visualizing Continental Life Expectancy (2007)
+
+```{r}
+#| echo: true
+#| warning: false
+#| message: false
+#| code-fold: true
+
+library(ggplot2)
+
+ggplot(summary_2007, aes(x = continent, y = median_life_exp, fill = continent)) +
+  geom_bar(stat = "identity") +
+  labs(
+    title = "Median Life Expectancy by Continent (2007)",
+    x = "Continent",
+    y = "Median Life Expectancy (years)"
+  ) +
+  theme_minimal() +
+  scale_fill_brewer(palette = "Set2") +
+  theme(legend.position = "none")
 ```

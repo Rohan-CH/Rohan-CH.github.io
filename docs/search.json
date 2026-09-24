@@ -4,7 +4,7 @@
     "href": "blog.html",
     "title": "Blog",
     "section": "",
-    "text": "Python Gapminder Analysis\n\n\n\n\n\n\n\n\nSep 23, 2026\n\n\nRohan Chakkadath\n\n\n\n\n\n\n\n\n\n\n\n\nR Gapminder Analysis\n\n\n\n\n\n\n\n\nSep 23, 2026\n\n\nRohan Chakkadath\n\n\n\n\n\n\n\n\n\n\n\n\nPython and R Interoperability Bonus\n\n\n\n\n\n\n\n\nSep 23, 2026\n\n\nRohan Chakkadath\n\n\n\n\n\n\n\n\n\n\n\n\nMy first weeks in MDS\n\n\n\n\n\n\n\n\nSep 10, 2026\n\n\nRohan Chakkadath\n\n\n\n\n\nNo matching items"
+    "text": "Global Life Expectancy Trends (Python)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nGlobal Life Expectancy Trends (R)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPython and R Interoperability Bonus\n\n\n\n\n\n\n\n\nSep 23, 2026\n\n\nRohan Chakkadath\n\n\n\n\n\n\n\n\n\n\n\n\nMy first weeks in MDS\n\n\n\n\n\n\n\n\nSep 10, 2026\n\n\nRohan Chakkadath\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",
@@ -16,44 +16,72 @@
   {
     "objectID": "posts/r-gapminder/index.html",
     "href": "posts/r-gapminder/index.html",
-    "title": "R Gapminder Analysis",
+    "title": "Global Life Expectancy Trends (R)",
     "section": "",
-    "text": "To confirm this post is rendering using the isolated renv project library instead of the global R installation:\n\n.libPaths()\n\n[1] \"/Users/rohan/Documents/MDS/521_platforms-dsci/lab/DSCI_521-milestone_3/Rohan-CH.github.io/renv/library/macos/R-4.6/aarch64-apple-darwin23\"\n[2] \"/Users/rohan/Library/Caches/org.R-project.R/R/renv/sandbox/macos/R-4.6/aarch64-apple-darwin23/46003b10\""
+    "text": ".libPaths()\n\n[1] \"/Users/rohan/Documents/MDS/521_platforms-dsci/lab/DSCI_521-milestone_3/Rohan-CH.github.io/renv/library/macos/R-4.6/aarch64-apple-darwin23\"\n[2] \"/Users/rohan/Library/Caches/org.R-project.R/R/renv/sandbox/macos/R-4.6/aarch64-apple-darwin23/46003b10\""
   },
   {
-    "objectID": "posts/r-gapminder/index.html#environment-check",
-    "href": "posts/r-gapminder/index.html#environment-check",
-    "title": "R Gapminder Analysis",
+    "objectID": "posts/r-gapminder/index.html#environment-verification",
+    "href": "posts/r-gapminder/index.html#environment-verification",
+    "title": "Global Life Expectancy Trends (R)",
     "section": "",
-    "text": "To confirm this post is rendering using the isolated renv project library instead of the global R installation:\n\n.libPaths()\n\n[1] \"/Users/rohan/Documents/MDS/521_platforms-dsci/lab/DSCI_521-milestone_3/Rohan-CH.github.io/renv/library/macos/R-4.6/aarch64-apple-darwin23\"\n[2] \"/Users/rohan/Library/Caches/org.R-project.R/R/renv/sandbox/macos/R-4.6/aarch64-apple-darwin23/46003b10\""
+    "text": ".libPaths()\n\n[1] \"/Users/rohan/Documents/MDS/521_platforms-dsci/lab/DSCI_521-milestone_3/Rohan-CH.github.io/renv/library/macos/R-4.6/aarch64-apple-darwin23\"\n[2] \"/Users/rohan/Library/Caches/org.R-project.R/R/renv/sandbox/macos/R-4.6/aarch64-apple-darwin23/46003b10\""
   },
   {
-    "objectID": "posts/r-gapminder/index.html#data-overview",
-    "href": "posts/r-gapminder/index.html#data-overview",
-    "title": "R Gapminder Analysis",
-    "section": "Data Overview",
-    "text": "Data Overview\nFor this post, I am analyzing global life expectancy. The dataset used in this analysis is the Gapminder dataset, which provides historical data on life expectancy, GDP per capita, and population by country.\n\nlibrary(gapminder)\nlibrary(dplyr)\n\nhead(gapminder)\n\n# A tibble: 6 × 6\n  country     continent  year lifeExp      pop gdpPercap\n  &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;\n1 Afghanistan Asia       1952    28.8  8425333      779.\n2 Afghanistan Asia       1957    30.3  9240934      821.\n3 Afghanistan Asia       1962    32.0 10267083      853.\n4 Afghanistan Asia       1967    34.0 11537966      836.\n5 Afghanistan Asia       1972    36.1 13079460      740.\n6 Afghanistan Asia       1977    38.4 14880372      786."
+    "objectID": "posts/r-gapminder/index.html#dataset-overview",
+    "href": "posts/r-gapminder/index.html#dataset-overview",
+    "title": "Global Life Expectancy Trends (R)",
+    "section": "Dataset Overview",
+    "text": "Dataset Overview\nThe Gapminder dataset provides country-level records over 5-year intervals from 1952 to 2007.\n\nlibrary(gapminder)\nlibrary(dplyr)\n\nglimpse(gapminder)\n\nRows: 1,704\nColumns: 6\n$ country   &lt;fct&gt; \"Afghanistan\", \"Afghanistan\", \"Afghanistan\", \"Afghanistan\", …\n$ continent &lt;fct&gt; Asia, Asia, Asia, Asia, Asia, Asia, Asia, Asia, Asia, Asia, …\n$ year      &lt;int&gt; 1952, 1957, 1962, 1967, 1972, 1977, 1982, 1987, 1992, 1997, …\n$ lifeExp   &lt;dbl&gt; 28.801, 30.332, 31.997, 34.020, 36.088, 38.438, 39.854, 40.8…\n$ pop       &lt;int&gt; 8425333, 9240934, 10267083, 11537966, 13079460, 14880372, 12…\n$ gdpPercap &lt;dbl&gt; 779.4453, 820.8530, 853.1007, 836.1971, 739.9811, 786.1134, …"
+  },
+  {
+    "objectID": "posts/r-gapminder/index.html#continental-overview-in-2007",
+    "href": "posts/r-gapminder/index.html#continental-overview-in-2007",
+    "title": "Global Life Expectancy Trends (R)",
+    "section": "Continental Overview in 2007",
+    "text": "Continental Overview in 2007\n\n\nCode\nsummary_2007 &lt;- gapminder |&gt;\n  filter(year == 2007) |&gt;\n  group_by(continent) |&gt;\n  summarise(\n    median_life_exp = median(lifeExp),\n    median_gdp = median(gdpPercap),\n    total_population = sum(as.numeric(pop)),\n    num_countries = n()\n  ) |&gt;\n  arrange(desc(median_life_exp))\n\nknitr::kable(summary_2007, digits = 2, caption = \"2007 Continental Summary\")\n\n\n\n2007 Continental Summary\n\n\n\n\n\n\n\n\n\ncontinent\nmedian_life_exp\nmedian_gdp\ntotal_population\nnum_countries\n\n\n\n\nOceania\n80.72\n29810.19\n24549947\n2\n\n\nEurope\n78.61\n28054.07\n586098529\n30\n\n\nAmericas\n72.90\n8948.10\n898871184\n25\n\n\nAsia\n72.40\n4471.06\n3811953827\n33\n\n\nAfrica\n52.93\n1452.27\n929539692\n52"
+  },
+  {
+    "objectID": "posts/r-gapminder/index.html#longitudinal-life-expectancy-trajectory",
+    "href": "posts/r-gapminder/index.html#longitudinal-life-expectancy-trajectory",
+    "title": "Global Life Expectancy Trends (R)",
+    "section": "Longitudinal Life Expectancy Trajectory",
+    "text": "Longitudinal Life Expectancy Trajectory\n\nyearly_trend &lt;- gapminder |&gt;\n  group_by(year) |&gt;\n  summarise(median_life_exp = median(lifeExp))\n\nplot(\n  yearly_trend$year,\n  yearly_trend$median_life_exp,\n  type = \"b\",\n  pch = 19,\n  col = \"navy\",\n  xlab = \"Year\",\n  ylab = \"Median Life Expectancy (Years)\",\n  main = \"Global Median Life Expectancy (1952 - 2007)\"\n)\ngrid()\n\n\n\n\nGlobal median life expectancy progression from 1952 to 2007.\n\n\n\n\n\nVisualizing Continental Life Expectancy (2007)\n\n\nCode\nlibrary(ggplot2)\n\nggplot(summary_2007, aes(x = continent, y = median_life_exp, fill = continent)) +\n  geom_bar(stat = \"identity\") +\n  labs(\n    title = \"Median Life Expectancy by Continent (2007)\",\n    x = \"Continent\",\n    y = \"Median Life Expectancy (years)\"\n  ) +\n  theme_minimal() +\n  scale_fill_brewer(palette = \"Set2\") +\n  theme(legend.position = \"none\")"
   },
   {
     "objectID": "posts/python-gapminder/index.html",
     "href": "posts/python-gapminder/index.html",
-    "title": "Python Gapminder Analysis",
+    "title": "Global Life Expectancy Trends (Python)",
     "section": "",
-    "text": "To confirm this post is rendering using the isolated virtual environment:\n\nimport sys\nprint(sys.executable)\n\n/Users/rohan/Documents/MDS/521_platforms-dsci/lab/DSCI_521-milestone_3/Rohan-CH.github.io/.venv/bin/python"
+    "text": "import sys\nprint(sys.executable)\n\n/Users/rohan/Documents/MDS/521_platforms-dsci/lab/DSCI_521-milestone_3/Rohan-CH.github.io/.venv/bin/python"
   },
   {
-    "objectID": "posts/python-gapminder/index.html#environment-check",
-    "href": "posts/python-gapminder/index.html#environment-check",
-    "title": "Python Gapminder Analysis",
+    "objectID": "posts/python-gapminder/index.html#environment-verification",
+    "href": "posts/python-gapminder/index.html#environment-verification",
+    "title": "Global Life Expectancy Trends (Python)",
     "section": "",
-    "text": "To confirm this post is rendering using the isolated virtual environment:\n\nimport sys\nprint(sys.executable)\n\n/Users/rohan/Documents/MDS/521_platforms-dsci/lab/DSCI_521-milestone_3/Rohan-CH.github.io/.venv/bin/python"
+    "text": "import sys\nprint(sys.executable)\n\n/Users/rohan/Documents/MDS/521_platforms-dsci/lab/DSCI_521-milestone_3/Rohan-CH.github.io/.venv/bin/python"
   },
   {
-    "objectID": "posts/python-gapminder/index.html#data-overview",
-    "href": "posts/python-gapminder/index.html#data-overview",
-    "title": "Python Gapminder Analysis",
-    "section": "Data Overview",
-    "text": "Data Overview\nFor this post, I am analyzing global life expectancy. The dataset used in this analysis is the Gapminder dataset, which provides historical data on life expectancy, GDP per capita, and population by country.\n\nimport pandas as pd\nfrom gapminder import gapminder\n\ngapminder.head()\n\n\n\n\n\n\n\n\ncountry\ncontinent\nyear\nlifeExp\npop\ngdpPercap\n\n\n\n\n0\nAfghanistan\nAsia\n1952\n28.801\n8425333\n779.445314\n\n\n1\nAfghanistan\nAsia\n1957\n30.332\n9240934\n820.853030\n\n\n2\nAfghanistan\nAsia\n1962\n31.997\n10267083\n853.100710\n\n\n3\nAfghanistan\nAsia\n1967\n34.020\n11537966\n836.197138\n\n\n4\nAfghanistan\nAsia\n1972\n36.088\n13079460\n739.981106"
+    "objectID": "posts/python-gapminder/index.html#dataset-overview",
+    "href": "posts/python-gapminder/index.html#dataset-overview",
+    "title": "Global Life Expectancy Trends (Python)",
+    "section": "Dataset Overview",
+    "text": "Dataset Overview\nThe Gapminder dataset tracks historical socio-economic metrics across countries and continents between 1952 and 2007. Key variables include life expectancy (lifeExp), population (pop), and GDP per capita (gdpPercap).\n\nimport pandas as pd\nfrom gapminder import gapminder\n\ngapminder.head()\n\n\n\n\n\n\n\n\ncountry\ncontinent\nyear\nlifeExp\npop\ngdpPercap\n\n\n\n\n0\nAfghanistan\nAsia\n1952\n28.801\n8425333\n779.445314\n\n\n1\nAfghanistan\nAsia\n1957\n30.332\n9240934\n820.853030\n\n\n2\nAfghanistan\nAsia\n1962\n31.997\n10267083\n853.100710\n\n\n3\nAfghanistan\nAsia\n1967\n34.020\n11537966\n836.197138\n\n\n4\nAfghanistan\nAsia\n1972\n36.088\n13079460\n739.981106"
+  },
+  {
+    "objectID": "posts/python-gapminder/index.html#regional-summary-2007",
+    "href": "posts/python-gapminder/index.html#regional-summary-2007",
+    "title": "Global Life Expectancy Trends (Python)",
+    "section": "Regional Summary (2007)",
+    "text": "Regional Summary (2007)\nComparing median life expectancy and GDP per capita across continents in the most recent survey year:\n\n\nCode\nrecent_summary = (\n    gapminder[gapminder[\"year\"] == 2007]\n    .groupby(\"continent\")\n    .agg(\n        median_life_exp=(\"lifeExp\", \"median\"),\n        median_gdp=(\"gdpPercap\", \"median\"),\n        total_pop=(\"pop\", \"sum\"),\n        country_count=(\"country\", \"count\")\n    )\n    .sort_values(by=\"median_life_exp\", ascending=False)\n    .reset_index()\n)\n\nrecent_summary\n\n\n\n\n\n\n\n\n\ncontinent\nmedian_life_exp\nmedian_gdp\ntotal_pop\ncountry_count\n\n\n\n\n0\nOceania\n80.7195\n29810.188275\n24549947\n2\n\n\n1\nEurope\n78.6085\n28054.065790\n586098529\n30\n\n\n2\nAmericas\n72.8990\n8948.102923\n898871184\n25\n\n\n3\nAsia\n72.3960\n4471.061906\n3811953827\n33\n\n\n4\nAfrica\n52.9265\n1452.267078\n929539692\n52"
+  },
+  {
+    "objectID": "posts/python-gapminder/index.html#year-progress-1952-vs-2007",
+    "href": "posts/python-gapminder/index.html#year-progress-1952-vs-2007",
+    "title": "Global Life Expectancy Trends (Python)",
+    "section": "55-Year Progress (1952 vs 2007)",
+    "text": "55-Year Progress (1952 vs 2007)\n\ncomparison = (\n    gapminder[gapminder[\"year\"].isin([1952, 2007])]\n    .groupby([\"continent\", \"year\"])[\"lifeExp\"]\n    .mean()\n    .unstack()\n    .rename(columns={1952: \"life_exp_1952\", 2007: \"life_exp_2007\"})\n)\n\ncomparison[\"gain_years\"] = comparison[\"life_exp_2007\"] - comparison[\"life_exp_1952\"]\ncomparison.round(2)\n\n\n\n\n\n\n\nyear\nlife_exp_1952\nlife_exp_2007\ngain_years\n\n\ncontinent\n\n\n\n\n\n\n\nAfrica\n39.14\n54.81\n15.67\n\n\nAmericas\n53.28\n73.61\n20.33\n\n\nAsia\n46.31\n70.73\n24.41\n\n\nEurope\n64.41\n77.65\n13.24\n\n\nOceania\n69.26\n80.72\n11.46\n\n\n\n\n\n\n\nEvery continent experienced double-digit gains in average life expectancy between 1952 and 2007, with Asia demonstrating the largest absolute increase over that span.\n\nVisualizing Regional Life Expectancy (2007)\n\n\nCode\nimport matplotlib.pyplot as plt\n\nfig, ax = plt.subplots(figsize=(8, 5))\nax.bar(recent_summary['continent'], recent_summary['median_life_exp'], color='royalblue')\nax.set_title('Median Life Expectancy by Continent (2007)')\nax.set_ylabel('Median Life Expectancy (years)')\nax.set_xlabel('Continent')\nplt.show()"
   },
   {
     "objectID": "posts/first-weeks/index.html",
@@ -102,6 +130,27 @@
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "What I Do: I love solving problems, domain irrespective. Thats what got me into computers in the first place. With a graduation focused in Computer Science and Engineering, I have over 6+ years managing entriprise deployments across Asia, the Middle east and Africa. I also have an independent fitness product suite venture, on the side. Because, I love lifting weights.\nWhy MDS: I was always fascinated by the idea that solving problems make learning easier. I love working with data and solving data problems.\nOutside of MDS: I like lifting big weights and listening to alot of (questionable) music."
+    "text": "I love solving problems, regardless of the domain. That’s what got me into computers in the first place. With a degree in Computer Science and Engineering, I have over 6 years of experience managing enterprise deployments across Asia, the Middle East, and Africa. I also run an independent fitness software venture on the side, mainly because I love lifting weights."
+  },
+  {
+    "objectID": "about.html#what-i-do",
+    "href": "about.html#what-i-do",
+    "title": "About",
+    "section": "",
+    "text": "I love solving problems, regardless of the domain. That’s what got me into computers in the first place. With a degree in Computer Science and Engineering, I have over 6 years of experience managing enterprise deployments across Asia, the Middle East, and Africa. I also run an independent fitness software venture on the side, mainly because I love lifting weights."
+  },
+  {
+    "objectID": "about.html#why-mds",
+    "href": "about.html#why-mds",
+    "title": "About",
+    "section": "Why MDS",
+    "text": "Why MDS\nI was always fascinated by the idea that solving problems makes learning easier. I love working with data and tackling data challenges."
+  },
+  {
+    "objectID": "about.html#outside-of-mds",
+    "href": "about.html#outside-of-mds",
+    "title": "About",
+    "section": "Outside of MDS",
+    "text": "Outside of MDS\nI like lifting big weights and listening to a lot of (questionable) music."
   }
 ]
