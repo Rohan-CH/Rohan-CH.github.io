@@ -5,6 +5,8 @@ project:
 website:
   title: "Rohan Chakkadath"
   navbar:
+    background: "#000000"  
+    foreground: "#FFFFFF"
     left:
       - href: index.qmd
         text: Home

@@ -3,9 +3,18 @@ title: "Rohan Chakkadath"
 about:
   template: jolla
   image: images/profile.jpg
+format:
+  html:
+    theme: cosmo 
+    backgroundcolor: "#000000"  
+    fontcolor: "#f4f3f3"        
+    linkcolor: "#7a2886" 
 ---
 *I climb a lot of mountains for somebody who is scared of heights.*
 
-I'm an engineer with a degree in Computer Science and over six years of experience managing data solutions for telecom giants. Fun fact: I taught myself C++ at 13 just so I could justify spending more time on the computer to play video games!
+Computer Science engineer and telecom data wrangler. I’ve got over six years of experience architecting data solutions for global networks, but my proudest accomplishment might still be learning C++ at 13 purely as an excuse to play more video games.
 
-Here to meet new people and write new code.
+\newline
+\newline
+
+Here to meet **new people** and write **new code.**
