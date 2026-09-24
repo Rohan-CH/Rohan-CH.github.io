@@ -52,7 +52,7 @@ knitr::kable(summary_2007, digits = 2, caption = "2007 Continental Summary")
 ```{r}
 #| echo: true
 #| label: fig-life-exp-trend
-#| code-fold: false
+#| code-fold: true
 #| fig-cap: "Global median life expectancy progression from 1952 to 2007."
 
 yearly_trend <- gapminder |>
@@ -78,7 +78,7 @@ grid()
 #| echo: true
 #| warning: false
 #| message: false
-#| code-fold: false
+#| code-fold: true
 
 library(ggplot2)
 

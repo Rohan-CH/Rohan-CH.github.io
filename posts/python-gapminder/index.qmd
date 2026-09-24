@@ -54,7 +54,7 @@ recent_summary
 
 ```{python}
 #| echo: true
-#| code-fold: false
+#| code-fold: true
 
 comparison = (
     gapminder[gapminder["year"].isin([1952, 2007])]
@@ -75,7 +75,7 @@ Every continent experienced double-digit gains in average life expectancy betwee
 ```{python}
 #| echo: true
 #| warning: false
-#| code-fold: false
+#| code-fold: true
 
 import matplotlib.pyplot as plt
 
