@@ -9,7 +9,7 @@
 <meta name="author" content="Rohan Chakkadath">
 <meta name="dcterms.date" content="2026-09-23">
 
-<title>Python Gapminder Analysis – Rohan Chakkadath</title>
+<title>Python and R Interoperability Bonus – Rohan Chakkadath</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -66,7 +66,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -110,9 +110,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
-
-<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 <link rel="stylesheet" href="../../styles.css">
@@ -163,8 +160,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#environment-check" id="toc-environment-check" class="nav-link active" data-scroll-target="#environment-check">Environment Check</a></li>
-  <li><a href="#data-overview" id="toc-data-overview" class="nav-link" data-scroll-target="#data-overview">Data Overview</a></li>
+  <li><a href="#pointing-reticulate-to-the-virtual-environment" id="toc-pointing-reticulate-to-the-virtual-environment" class="nav-link active" data-scroll-target="#pointing-reticulate-to-the-virtual-environment">Pointing Reticulate to the Virtual Environment</a></li>
+  <li><a href="#creating-data-in-r" id="toc-creating-data-in-r" class="nav-link" data-scroll-target="#creating-data-in-r">Creating Data in R</a></li>
+  <li><a href="#reading-r-data-into-python" id="toc-reading-r-data-into-python" class="nav-link" data-scroll-target="#reading-r-data-into-python">Reading R Data into Python</a></li>
+  <li><a href="#returning-python-data-back-to-r" id="toc-returning-python-data-back-to-r" class="nav-link" data-scroll-target="#returning-python-data-back-to-r">Returning Python Data back to R</a></li>
   </ul>
 </nav>
     </div>
@@ -173,7 +172,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Python Gapminder Analysis</h1>
+<h1 class="title">Python and R Interoperability Bonus</h1>
 </div>
 
 
@@ -202,91 +201,74 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="environment-check" class="level2">
-<h2 class="anchored" data-anchor-id="environment-check">Environment Check</h2>
-<p>To confirm this post is rendering using the isolated virtual environment:</p>
-<div id="bbe03133" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sys.executable)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="pointing-reticulate-to-the-virtual-environment" class="level2">
+<h2 class="anchored" data-anchor-id="pointing-reticulate-to-the-virtual-environment">Pointing Reticulate to the Virtual Environment</h2>
+<p>By default, R might try to use your system’s global Python. To ensure true reproducibility, we explicitly tell the <code>reticulate</code> package to use the Python binary inside our <code>uv</code> virtual environment.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reticulate)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Force reticulate to use the project's .venv</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">use_virtualenv</span>(<span class="st">"../../.venv"</span>, <span class="at">required =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="creating-data-in-r" class="level2">
+<h2 class="anchored" data-anchor-id="creating-data-in-r">Creating Data in R</h2>
+<p>First, let’s create a simple dataframe using R.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a small dataset in R</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>r_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">score =</span> <span class="fu">c</span>(<span class="dv">85</span>, <span class="dv">92</span>, <span class="dv">78</span>, <span class="dv">90</span>, <span class="dv">88</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(r_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>/Users/rohan/Documents/MDS/521_platforms-dsci/lab/DSCI_521-milestone_3/Rohan-CH.github.io/.venv/bin/python</code></pre>
+<pre><code>  id score
+1  1    85
+2  2    92
+3  3    78
+4  4    90
+5  5    88</code></pre>
 </div>
 </div>
 </section>
-<section id="data-overview" class="level2">
-<h2 class="anchored" data-anchor-id="data-overview">Data Overview</h2>
-<p>For this post, I am analyzing global life expectancy. The dataset used in this analysis is the Gapminder dataset, which provides historical data on life expectancy, GDP per capita, and population by country.</p>
-<div id="a106ac11" class="cell" data-execution_count="2">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gapminder <span class="im">import</span> gapminder</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>gapminder.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="2">
-<div>
-
-
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">country</th>
-<th data-quarto-table-cell-role="th">continent</th>
-<th data-quarto-table-cell-role="th">year</th>
-<th data-quarto-table-cell-role="th">lifeExp</th>
-<th data-quarto-table-cell-role="th">pop</th>
-<th data-quarto-table-cell-role="th">gdpPercap</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">0</th>
-<td>Afghanistan</td>
-<td>Asia</td>
-<td>1952</td>
-<td>28.801</td>
-<td>8425333</td>
-<td>779.445314</td>
-</tr>
-<tr class="even">
-<th data-quarto-table-cell-role="th">1</th>
-<td>Afghanistan</td>
-<td>Asia</td>
-<td>1957</td>
-<td>30.332</td>
-<td>9240934</td>
-<td>820.853030</td>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">2</th>
-<td>Afghanistan</td>
-<td>Asia</td>
-<td>1962</td>
-<td>31.997</td>
-<td>10267083</td>
-<td>853.100710</td>
-</tr>
-<tr class="even">
-<th data-quarto-table-cell-role="th">3</th>
-<td>Afghanistan</td>
-<td>Asia</td>
-<td>1967</td>
-<td>34.020</td>
-<td>11537966</td>
-<td>836.197138</td>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">4</th>
-<td>Afghanistan</td>
-<td>Asia</td>
-<td>1972</td>
-<td>36.088</td>
-<td>13079460</td>
-<td>739.981106</td>
-</tr>
-</tbody>
-</table>
-
+<section id="reading-r-data-into-python" class="level2">
+<h2 class="anchored" data-anchor-id="reading-r-data-into-python">Reading R Data into Python</h2>
+<p>Now, we switch to a Python chunk. We can read the R object natively into Python by calling <code>r.name</code> (where “name” is the variable we created in R).</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Access the R dataframe using r.r_data</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>python_df <span class="op">=</span> r.r_data</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Modify the dataframe using Python (adding a curve to the score)</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>python_df[<span class="st">'curved_score'</span>] <span class="op">=</span> python_df[<span class="st">'score'</span>] <span class="op">+</span> <span class="dv">5</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(python_df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   id  score  curved_score
+0   1   85.0          90.0
+1   2   92.0          97.0
+2   3   78.0          83.0
+3   4   90.0          95.0
+4   5   88.0          93.0</code></pre>
 </div>
+</div>
+</section>
+<section id="returning-python-data-back-to-r" class="level2">
+<h2 class="anchored" data-anchor-id="returning-python-data-back-to-r">Returning Python Data back to R</h2>
+<p>Finally, we switch back to an R chunk. We can retrieve the modified dataframe from Python by calling <code>py$name</code>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access the modified Python dataframe using py$python_df</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>final_r_data <span class="ot">&lt;-</span> py<span class="sc">$</span>python_df</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the curved scores back in R</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(final_r_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  id score curved_score
+1  1    85           90
+2  2    92           97
+3  3    78           83
+4  4    90           95
+5  5    88           93</code></pre>
 </div>
 </div>
 

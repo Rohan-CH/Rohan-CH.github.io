@@ -1,0 +1,58 @@
+---
+title: "Python and R Interoperability Bonus"
+author: "Rohan Chakkadath"
+date: 2026-09-23
+---
+
+## Pointing Reticulate to the Virtual Environment
+
+By default, R might try to use your system's global Python. To ensure true reproducibility, we explicitly tell the `reticulate` package to use the Python binary inside our `uv` virtual environment.
+
+```{r}
+#| message: false
+#| warning: false
+library(reticulate)
+
+# Force reticulate to use the project's .venv
+use_virtualenv("../../.venv", required = TRUE)
+```
+
+## Creating Data in R
+
+First, let's create a simple dataframe using R.
+
+```{r}
+# Create a small dataset in R
+r_data <- data.frame(
+  id = 1:5,
+  score = c(85, 92, 78, 90, 88)
+)
+print(r_data)
+```
+
+## Reading R Data into Python
+
+Now, we switch to a Python chunk. We can read the R object natively into Python by calling `r.name` (where "name" is the variable we created in R).
+
+```{python}
+import pandas as pd
+
+# Access the R dataframe using r.r_data
+python_df = r.r_data
+
+# Modify the dataframe using Python (adding a curve to the score)
+python_df['curved_score'] = python_df['score'] + 5
+print(python_df)
+```
+
+## Returning Python Data back to R
+
+Finally, we switch back to an R chunk. We can retrieve the modified dataframe from Python by calling `py$name`.
+
+```{r}
+# Access the modified Python dataframe using py$python_df
+final_r_data <- py$python_df
+
+# Display the curved scores back in R
+print(final_r_data)
+```

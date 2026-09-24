@@ -4,7 +4,7 @@
     "href": "blog.html",
     "title": "Blog",
     "section": "",
-    "text": "Python Gapminder Analysis\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nR Gapminder Analysis\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMy first weeks in MDS\n\n\n\n\n\n\n\n\nSep 10, 2026\n\n\nRohan Chakkadath\n\n\n\n\n\nNo matching items"
+    "text": "Python Gapminder Analysis\n\n\n\n\n\n\n\n\nSep 23, 2026\n\n\nRohan Chakkadath\n\n\n\n\n\n\n\n\n\n\n\n\nR Gapminder Analysis\n\n\n\n\n\n\n\n\nSep 23, 2026\n\n\nRohan Chakkadath\n\n\n\n\n\n\n\n\n\n\n\n\nPython and R Interoperability Bonus\n\n\n\n\n\n\n\n\nSep 23, 2026\n\n\nRohan Chakkadath\n\n\n\n\n\n\n\n\n\n\n\n\nMy first weeks in MDS\n\n\n\n\n\n\n\n\nSep 10, 2026\n\n\nRohan Chakkadath\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",
@@ -14,18 +14,25 @@
     "text": "I climb a lot of mountains for somebody who is scared of heights.\nHere to meet new people and write new code."
   },
   {
-    "objectID": "posts/first-weeks/index.html",
-    "href": "posts/first-weeks/index.html",
-    "title": "My first weeks in MDS",
+    "objectID": "posts/r-gapminder/index.html",
+    "href": "posts/r-gapminder/index.html",
+    "title": "R Gapminder Analysis",
     "section": "",
-    "text": "Orientation day on campus.\n\n\nMDS moves fast. Orientation week was hectic, but super fun at the same time. I did ask myself “What did I get myself into quite a few times” but week one made me realise I was exactly where I’m supposed to be.\nMaking friends was easy, Cohort 11 has some super cool people. I was fascinated to learn that MDS this year has students from 35+ nationalities. I dont think I have ever been in a room with such diversity.\nComing out of a whirlwind of team-building exercises, technical workshops, and wellness sessions, both the cohort and I are fully primed to tackle the challenges ahead!"
+    "text": "To confirm this post is rendering using the isolated renv project library instead of the global R installation:\n\n.libPaths()\n\n[1] \"/Users/rohan/Documents/MDS/521_platforms-dsci/lab/DSCI_521-milestone_3/Rohan-CH.github.io/renv/library/macos/R-4.6/aarch64-apple-darwin23\"\n[2] \"/Users/rohan/Library/Caches/org.R-project.R/R/renv/sandbox/macos/R-4.6/aarch64-apple-darwin23/46003b10\""
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
+    "objectID": "posts/r-gapminder/index.html#environment-check",
+    "href": "posts/r-gapminder/index.html#environment-check",
+    "title": "R Gapminder Analysis",
     "section": "",
-    "text": "What I Do: I love solving problems, domain irrespective. Thats what got me into computers in the first place. With a graduation focused in Computer Science and Engineering, I have over 6+ years managing entriprise deployments across Asia, the Middle east and Africa. I also have an independent fitness product suite venture, on the side. Because, I love lifting weights.\nWhy MDS: I was always fascinated by the idea that solving problems make learning easier. I love working with data and solving data problems.\nOutside of MDS: I like lifting big weights and listening to alot of (questionable) music."
+    "text": "To confirm this post is rendering using the isolated renv project library instead of the global R installation:\n\n.libPaths()\n\n[1] \"/Users/rohan/Documents/MDS/521_platforms-dsci/lab/DSCI_521-milestone_3/Rohan-CH.github.io/renv/library/macos/R-4.6/aarch64-apple-darwin23\"\n[2] \"/Users/rohan/Library/Caches/org.R-project.R/R/renv/sandbox/macos/R-4.6/aarch64-apple-darwin23/46003b10\""
+  },
+  {
+    "objectID": "posts/r-gapminder/index.html#data-overview",
+    "href": "posts/r-gapminder/index.html#data-overview",
+    "title": "R Gapminder Analysis",
+    "section": "Data Overview",
+    "text": "Data Overview\nFor this post, I am analyzing global life expectancy. The dataset used in this analysis is the Gapminder dataset, which provides historical data on life expectancy, GDP per capita, and population by country.\n\nlibrary(gapminder)\nlibrary(dplyr)\n\nhead(gapminder)\n\n# A tibble: 6 × 6\n  country     continent  year lifeExp      pop gdpPercap\n  &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;\n1 Afghanistan Asia       1952    28.8  8425333      779.\n2 Afghanistan Asia       1957    30.3  9240934      821.\n3 Afghanistan Asia       1962    32.0 10267083      853.\n4 Afghanistan Asia       1967    34.0 11537966      836.\n5 Afghanistan Asia       1972    36.1 13079460      740.\n6 Afghanistan Asia       1977    38.4 14880372      786."
   },
   {
     "objectID": "posts/python-gapminder/index.html",
@@ -49,24 +56,52 @@
     "text": "Data Overview\nFor this post, I am analyzing global life expectancy. The dataset used in this analysis is the Gapminder dataset, which provides historical data on life expectancy, GDP per capita, and population by country.\n\nimport pandas as pd\nfrom gapminder import gapminder\n\ngapminder.head()\n\n\n\n\n\n\n\n\ncountry\ncontinent\nyear\nlifeExp\npop\ngdpPercap\n\n\n\n\n0\nAfghanistan\nAsia\n1952\n28.801\n8425333\n779.445314\n\n\n1\nAfghanistan\nAsia\n1957\n30.332\n9240934\n820.853030\n\n\n2\nAfghanistan\nAsia\n1962\n31.997\n10267083\n853.100710\n\n\n3\nAfghanistan\nAsia\n1967\n34.020\n11537966\n836.197138\n\n\n4\nAfghanistan\nAsia\n1972\n36.088\n13079460\n739.981106"
   },
   {
-    "objectID": "posts/r-gapminder/index.html",
-    "href": "posts/r-gapminder/index.html",
-    "title": "R Gapminder Analysis",
+    "objectID": "posts/first-weeks/index.html",
+    "href": "posts/first-weeks/index.html",
+    "title": "My first weeks in MDS",
     "section": "",
-    "text": "To confirm this post is rendering using the isolated renv project library instead of the global R installation:\n\n.libPaths()\n\n[1] \"/Users/rohan/Documents/MDS/521_platforms-dsci/lab/DSCI_521-milestone_3/Rohan-CH.github.io/renv/library/macos/R-4.6/aarch64-apple-darwin23\"\n[2] \"/Users/rohan/Library/Caches/org.R-project.R/R/renv/sandbox/macos/R-4.6/aarch64-apple-darwin23/46003b10\""
+    "text": "Orientation day on campus.\n\n\nMDS moves fast. Orientation week was hectic, but super fun at the same time. I did ask myself “What did I get myself into quite a few times” but week one made me realise I was exactly where I’m supposed to be.\nMaking friends was easy, Cohort 11 has some super cool people. I was fascinated to learn that MDS this year has students from 35+ nationalities. I dont think I have ever been in a room with such diversity.\nComing out of a whirlwind of team-building exercises, technical workshops, and wellness sessions, both the cohort and I are fully primed to tackle the challenges ahead!"
   },
   {
-    "objectID": "posts/r-gapminder/index.html#environment-check",
-    "href": "posts/r-gapminder/index.html#environment-check",
-    "title": "R Gapminder Analysis",
+    "objectID": "posts/bonus-interoperability/index.html",
+    "href": "posts/bonus-interoperability/index.html",
+    "title": "Python and R Interoperability Bonus",
     "section": "",
-    "text": "To confirm this post is rendering using the isolated renv project library instead of the global R installation:\n\n.libPaths()\n\n[1] \"/Users/rohan/Documents/MDS/521_platforms-dsci/lab/DSCI_521-milestone_3/Rohan-CH.github.io/renv/library/macos/R-4.6/aarch64-apple-darwin23\"\n[2] \"/Users/rohan/Library/Caches/org.R-project.R/R/renv/sandbox/macos/R-4.6/aarch64-apple-darwin23/46003b10\""
+    "text": "By default, R might try to use your system’s global Python. To ensure true reproducibility, we explicitly tell the reticulate package to use the Python binary inside our uv virtual environment.\n\nlibrary(reticulate)\n\n# Force reticulate to use the project's .venv\nuse_virtualenv(\"../../.venv\", required = TRUE)"
   },
   {
-    "objectID": "posts/r-gapminder/index.html#data-overview",
-    "href": "posts/r-gapminder/index.html#data-overview",
-    "title": "R Gapminder Analysis",
-    "section": "Data Overview",
-    "text": "Data Overview\nFor this post, I am analyzing global life expectancy. The dataset used in this analysis is the Gapminder dataset, which provides historical data on life expectancy, GDP per capita, and population by country.\n\nlibrary(gapminder)\nlibrary(dplyr)\n\nhead(gapminder)\n\n# A tibble: 6 × 6\n  country     continent  year lifeExp      pop gdpPercap\n  &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;\n1 Afghanistan Asia       1952    28.8  8425333      779.\n2 Afghanistan Asia       1957    30.3  9240934      821.\n3 Afghanistan Asia       1962    32.0 10267083      853.\n4 Afghanistan Asia       1967    34.0 11537966      836.\n5 Afghanistan Asia       1972    36.1 13079460      740.\n6 Afghanistan Asia       1977    38.4 14880372      786."
+    "objectID": "posts/bonus-interoperability/index.html#pointing-reticulate-to-the-virtual-environment",
+    "href": "posts/bonus-interoperability/index.html#pointing-reticulate-to-the-virtual-environment",
+    "title": "Python and R Interoperability Bonus",
+    "section": "",
+    "text": "By default, R might try to use your system’s global Python. To ensure true reproducibility, we explicitly tell the reticulate package to use the Python binary inside our uv virtual environment.\n\nlibrary(reticulate)\n\n# Force reticulate to use the project's .venv\nuse_virtualenv(\"../../.venv\", required = TRUE)"
+  },
+  {
+    "objectID": "posts/bonus-interoperability/index.html#creating-data-in-r",
+    "href": "posts/bonus-interoperability/index.html#creating-data-in-r",
+    "title": "Python and R Interoperability Bonus",
+    "section": "Creating Data in R",
+    "text": "Creating Data in R\nFirst, let’s create a simple dataframe using R.\n\n# Create a small dataset in R\nr_data &lt;- data.frame(\n  id = 1:5,\n  score = c(85, 92, 78, 90, 88)\n)\nprint(r_data)\n\n  id score\n1  1    85\n2  2    92\n3  3    78\n4  4    90\n5  5    88"
+  },
+  {
+    "objectID": "posts/bonus-interoperability/index.html#reading-r-data-into-python",
+    "href": "posts/bonus-interoperability/index.html#reading-r-data-into-python",
+    "title": "Python and R Interoperability Bonus",
+    "section": "Reading R Data into Python",
+    "text": "Reading R Data into Python\nNow, we switch to a Python chunk. We can read the R object natively into Python by calling r.name (where “name” is the variable we created in R).\n\nimport pandas as pd\n\n# Access the R dataframe using r.r_data\npython_df = r.r_data\n\n# Modify the dataframe using Python (adding a curve to the score)\npython_df['curved_score'] = python_df['score'] + 5\nprint(python_df)\n\n   id  score  curved_score\n0   1   85.0          90.0\n1   2   92.0          97.0\n2   3   78.0          83.0\n3   4   90.0          95.0\n4   5   88.0          93.0"
+  },
+  {
+    "objectID": "posts/bonus-interoperability/index.html#returning-python-data-back-to-r",
+    "href": "posts/bonus-interoperability/index.html#returning-python-data-back-to-r",
+    "title": "Python and R Interoperability Bonus",
+    "section": "Returning Python Data back to R",
+    "text": "Returning Python Data back to R\nFinally, we switch back to an R chunk. We can retrieve the modified dataframe from Python by calling py$name.\n\n# Access the modified Python dataframe using py$python_df\nfinal_r_data &lt;- py$python_df\n\n# Display the curved scores back in R\nprint(final_r_data)\n\n  id score curved_score\n1  1    85           90\n2  2    92           97\n3  3    78           83\n4  4    90           95\n5  5    88           93"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "What I Do: I love solving problems, domain irrespective. Thats what got me into computers in the first place. With a graduation focused in Computer Science and Engineering, I have over 6+ years managing entriprise deployments across Asia, the Middle east and Africa. I also have an independent fitness product suite venture, on the side. Because, I love lifting weights.\nWhy MDS: I was always fascinated by the idea that solving problems make learning easier. I love working with data and solving data problems.\nOutside of MDS: I like lifting big weights and listening to alot of (questionable) music."
   }
 ]
