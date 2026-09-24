@@ -7,7 +7,7 @@ date: 2026-09-23
 
 ## Environment Verification
 
-```{{r}}
+```{r}
 .libPaths()
 ```
 
@@ -15,7 +15,7 @@ date: 2026-09-23
 
 The [Gapminder dataset](https://www.gapminder.org/data/) provides country-level records over 5-year intervals from 1952 to 2007.
 
-```{{r}}
+```{r}
 #| echo: true
 #| warning: false
 #| message: false
@@ -28,7 +28,7 @@ glimpse(gapminder)
 
 ## Continental Overview in 2007
 
-```{{r}}
+```{r}
 #| echo: true
 #| code-fold: true
 
@@ -48,7 +48,7 @@ knitr::kable(summary_2007, digits = 2, caption = "2007 Continental Summary")
 
 ## Longitudinal Life Expectancy Trajectory
 
-```{{r}}
+```{r}
 #| echo: true
 #| label: fig-life-exp-trend
 #| fig-cap: "Global median life expectancy progression from 1952 to 2007."
@@ -72,7 +72,7 @@ grid()
 
 ### Visualizing Continental Life Expectancy (2007)
 
-```{{r}}
+```{r}
 #| echo: true
 #| warning: false
 #| message: false

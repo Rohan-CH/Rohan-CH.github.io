@@ -18,35 +18,35 @@
     "href": "posts/r-gapminder/index.html",
     "title": "Global Life Expectancy Trends (R)",
     "section": "",
-    "text": "```{r}\n.libPaths()\n```"
+    "text": ".libPaths()\n\n[1] \"/Users/rohan/Documents/MDS/521_platforms-dsci/lab/DSCI_521-milestone_3/Rohan-CH.github.io/renv/library/macos/R-4.6/aarch64-apple-darwin23\"\n[2] \"/Users/rohan/Library/Caches/org.R-project.R/R/renv/sandbox/macos/R-4.6/aarch64-apple-darwin23/46003b10\""
   },
   {
     "objectID": "posts/r-gapminder/index.html#environment-verification",
     "href": "posts/r-gapminder/index.html#environment-verification",
     "title": "Global Life Expectancy Trends (R)",
     "section": "",
-    "text": "```{r}\n.libPaths()\n```"
+    "text": ".libPaths()\n\n[1] \"/Users/rohan/Documents/MDS/521_platforms-dsci/lab/DSCI_521-milestone_3/Rohan-CH.github.io/renv/library/macos/R-4.6/aarch64-apple-darwin23\"\n[2] \"/Users/rohan/Library/Caches/org.R-project.R/R/renv/sandbox/macos/R-4.6/aarch64-apple-darwin23/46003b10\""
   },
   {
     "objectID": "posts/r-gapminder/index.html#dataset-overview",
     "href": "posts/r-gapminder/index.html#dataset-overview",
     "title": "Global Life Expectancy Trends (R)",
     "section": "Dataset Overview",
-    "text": "Dataset Overview\nThe Gapminder dataset provides country-level records over 5-year intervals from 1952 to 2007.\n```{r}\n#| echo: true\n#| warning: false\n#| message: false\n\nlibrary(gapminder)\nlibrary(dplyr)\n\nglimpse(gapminder)\n```"
+    "text": "Dataset Overview\nThe Gapminder dataset provides country-level records over 5-year intervals from 1952 to 2007.\n\nlibrary(gapminder)\nlibrary(dplyr)\n\nglimpse(gapminder)\n\nRows: 1,704\nColumns: 6\n$ country   &lt;fct&gt; \"Afghanistan\", \"Afghanistan\", \"Afghanistan\", \"Afghanistan\", …\n$ continent &lt;fct&gt; Asia, Asia, Asia, Asia, Asia, Asia, Asia, Asia, Asia, Asia, …\n$ year      &lt;int&gt; 1952, 1957, 1962, 1967, 1972, 1977, 1982, 1987, 1992, 1997, …\n$ lifeExp   &lt;dbl&gt; 28.801, 30.332, 31.997, 34.020, 36.088, 38.438, 39.854, 40.8…\n$ pop       &lt;int&gt; 8425333, 9240934, 10267083, 11537966, 13079460, 14880372, 12…\n$ gdpPercap &lt;dbl&gt; 779.4453, 820.8530, 853.1007, 836.1971, 739.9811, 786.1134, …"
   },
   {
     "objectID": "posts/r-gapminder/index.html#continental-overview-in-2007",
     "href": "posts/r-gapminder/index.html#continental-overview-in-2007",
     "title": "Global Life Expectancy Trends (R)",
     "section": "Continental Overview in 2007",
-    "text": "Continental Overview in 2007\n```{r}\n#| echo: true\n#| code-fold: true\n\nsummary_2007 &lt;- gapminder |&gt;\n  filter(year == 2007) |&gt;\n  group_by(continent) |&gt;\n  summarise(\n    median_life_exp = median(lifeExp),\n    median_gdp = median(gdpPercap),\n    total_population = sum(as.numeric(pop)),\n    num_countries = n()\n  ) |&gt;\n  arrange(desc(median_life_exp))\n\nknitr::kable(summary_2007, digits = 2, caption = \"2007 Continental Summary\")\n```"
+    "text": "Continental Overview in 2007\n\n\nCode\nsummary_2007 &lt;- gapminder |&gt;\n  filter(year == 2007) |&gt;\n  group_by(continent) |&gt;\n  summarise(\n    median_life_exp = median(lifeExp),\n    median_gdp = median(gdpPercap),\n    total_population = sum(as.numeric(pop)),\n    num_countries = n()\n  ) |&gt;\n  arrange(desc(median_life_exp))\n\nknitr::kable(summary_2007, digits = 2, caption = \"2007 Continental Summary\")\n\n\n\n2007 Continental Summary\n\n\n\n\n\n\n\n\n\ncontinent\nmedian_life_exp\nmedian_gdp\ntotal_population\nnum_countries\n\n\n\n\nOceania\n80.72\n29810.19\n24549947\n2\n\n\nEurope\n78.61\n28054.07\n586098529\n30\n\n\nAmericas\n72.90\n8948.10\n898871184\n25\n\n\nAsia\n72.40\n4471.06\n3811953827\n33\n\n\nAfrica\n52.93\n1452.27\n929539692\n52"
   },
   {
     "objectID": "posts/r-gapminder/index.html#longitudinal-life-expectancy-trajectory",
     "href": "posts/r-gapminder/index.html#longitudinal-life-expectancy-trajectory",
     "title": "Global Life Expectancy Trends (R)",
     "section": "Longitudinal Life Expectancy Trajectory",
-    "text": "Longitudinal Life Expectancy Trajectory\n```{r}\n#| echo: true\n#| label: fig-life-exp-trend\n#| fig-cap: \"Global median life expectancy progression from 1952 to 2007.\"\n\nyearly_trend &lt;- gapminder |&gt;\n  group_by(year) |&gt;\n  summarise(median_life_exp = median(lifeExp))\n\nplot(\n  yearly_trend$year,\n  yearly_trend$median_life_exp,\n  type = \"b\",\n  pch = 19,\n  col = \"navy\",\n  xlab = \"Year\",\n  ylab = \"Median Life Expectancy (Years)\",\n  main = \"Global Median Life Expectancy (1952 - 2007)\"\n)\ngrid()\n```\n\nVisualizing Continental Life Expectancy (2007)\n```{r}\n#| echo: true\n#| warning: false\n#| message: false\n#| code-fold: true\n\nlibrary(ggplot2)\n\nggplot(summary_2007, aes(x = continent, y = median_life_exp, fill = continent)) +\n  geom_bar(stat = \"identity\") +\n  labs(\n    title = \"Median Life Expectancy by Continent (2007)\",\n    x = \"Continent\",\n    y = \"Median Life Expectancy (years)\"\n  ) +\n  theme_minimal() +\n  scale_fill_brewer(palette = \"Set2\") +\n  theme(legend.position = \"none\")\n```"
+    "text": "Longitudinal Life Expectancy Trajectory\n\nyearly_trend &lt;- gapminder |&gt;\n  group_by(year) |&gt;\n  summarise(median_life_exp = median(lifeExp))\n\nplot(\n  yearly_trend$year,\n  yearly_trend$median_life_exp,\n  type = \"b\",\n  pch = 19,\n  col = \"navy\",\n  xlab = \"Year\",\n  ylab = \"Median Life Expectancy (Years)\",\n  main = \"Global Median Life Expectancy (1952 - 2007)\"\n)\ngrid()\n\n\n\n\n\n\n\nFigure 1: Global median life expectancy progression from 1952 to 2007.\n\n\n\n\n\n\nVisualizing Continental Life Expectancy (2007)\n\n\nCode\nlibrary(ggplot2)\n\nggplot(summary_2007, aes(x = continent, y = median_life_exp, fill = continent)) +\n  geom_bar(stat = \"identity\") +\n  labs(\n    title = \"Median Life Expectancy by Continent (2007)\",\n    x = \"Continent\",\n    y = \"Median Life Expectancy (years)\"\n  ) +\n  theme_minimal() +\n  scale_fill_brewer(palette = \"Set2\") +\n  theme(legend.position = \"none\")"
   },
   {
     "objectID": "posts/python-gapminder/index.html",
