@@ -3,11 +3,11 @@ title: "About"
 ---
 
 
-**What I Do:**
-I love solving problems, domain irrespective. Thats what got me into computers in the first place. With a graduation focused in Computer Science and Engineering, I have over 6+ years managing entriprise deployments across Asia, the Middle east and Africa. I also have an independent fitness product suite venture, on the side. Because, I love lifting weights.
+## What I Do
+I love solving problems, regardless of the domain. That's what got me into computers in the first place. With a degree in Computer Science and Engineering, I have over 6 years of experience managing enterprise deployments across Asia, the Middle East, and Africa. I also run an independent fitness software venture on the side, mainly because I love lifting weights.
 
-**Why MDS:**
-I was always fascinated by the idea that solving problems make learning easier. I love working with data and solving data problems.
+## Why MDS
+I was always fascinated by the idea that solving problems makes learning easier. I love working with data and tackling data challenges.
 
-**Outside of MDS:**
-I like lifting big weights and listening to alot of (questionable) music. 
+## Outside of MDS
+I like lifting big weights and listening to a lot of (questionable) music.
