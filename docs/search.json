@@ -18,70 +18,70 @@
     "href": "posts/r-gapminder/index.html",
     "title": "Global Life Expectancy Trends (R)",
     "section": "",
-    "text": ".libPaths()\n\n[1] \"/Users/rohan/Documents/MDS/521_platforms-dsci/lab/DSCI_521-milestone_3/Rohan-CH.github.io/renv/library/macos/R-4.6/aarch64-apple-darwin23\"\n[2] \"/Users/rohan/Library/Caches/org.R-project.R/R/renv/sandbox/macos/R-4.6/aarch64-apple-darwin23/46003b10\""
+    "text": "Checking the active library paths to ensure packages are loaded from the isolated project environment.\n\n.libPaths()\n\n[1] \"/Users/rohan/Documents/MDS/521_platforms-dsci/lab/DSCI_521-milestone_3/Rohan-CH.github.io/renv/library/macos/R-4.6/aarch64-apple-darwin23\"\n[2] \"/Users/rohan/Library/Caches/org.R-project.R/R/renv/sandbox/macos/R-4.6/aarch64-apple-darwin23/46003b10\"                                   \n\nlibrary(gapminder)\nlibrary(dplyr)"
   },
   {
     "objectID": "posts/r-gapminder/index.html#environment-verification",
     "href": "posts/r-gapminder/index.html#environment-verification",
     "title": "Global Life Expectancy Trends (R)",
     "section": "",
-    "text": ".libPaths()\n\n[1] \"/Users/rohan/Documents/MDS/521_platforms-dsci/lab/DSCI_521-milestone_3/Rohan-CH.github.io/renv/library/macos/R-4.6/aarch64-apple-darwin23\"\n[2] \"/Users/rohan/Library/Caches/org.R-project.R/R/renv/sandbox/macos/R-4.6/aarch64-apple-darwin23/46003b10\""
+    "text": "Checking the active library paths to ensure packages are loaded from the isolated project environment.\n\n.libPaths()\n\n[1] \"/Users/rohan/Documents/MDS/521_platforms-dsci/lab/DSCI_521-milestone_3/Rohan-CH.github.io/renv/library/macos/R-4.6/aarch64-apple-darwin23\"\n[2] \"/Users/rohan/Library/Caches/org.R-project.R/R/renv/sandbox/macos/R-4.6/aarch64-apple-darwin23/46003b10\"                                   \n\nlibrary(gapminder)\nlibrary(dplyr)"
   },
   {
     "objectID": "posts/r-gapminder/index.html#dataset-overview",
     "href": "posts/r-gapminder/index.html#dataset-overview",
     "title": "Global Life Expectancy Trends (R)",
     "section": "Dataset Overview",
-    "text": "Dataset Overview\nThe Gapminder dataset provides country-level records over 5-year intervals from 1952 to 2007.\n\nlibrary(gapminder)\nlibrary(dplyr)\n\nglimpse(gapminder)\n\nRows: 1,704\nColumns: 6\n$ country   &lt;fct&gt; \"Afghanistan\", \"Afghanistan\", \"Afghanistan\", \"Afghanistan\", …\n$ continent &lt;fct&gt; Asia, Asia, Asia, Asia, Asia, Asia, Asia, Asia, Asia, Asia, …\n$ year      &lt;int&gt; 1952, 1957, 1962, 1967, 1972, 1977, 1982, 1987, 1992, 1997, …\n$ lifeExp   &lt;dbl&gt; 28.801, 30.332, 31.997, 34.020, 36.088, 38.438, 39.854, 40.8…\n$ pop       &lt;int&gt; 8425333, 9240934, 10267083, 11537966, 13079460, 14880372, 12…\n$ gdpPercap &lt;dbl&gt; 779.4453, 820.8530, 853.1007, 836.1971, 739.9811, 786.1134, …"
+    "text": "Dataset Overview\nThe Gapminder dataset provides country-level records over 5-year intervals from 1952 to 2007. The glimpse output below shows the structure of the data, including population, continent, and life expectancy.\n\nglimpse(gapminder)\n\nRows: 1,704\nColumns: 6\n$ country   &lt;fct&gt; \"Afghanistan\", \"Afghanistan\", \"Afghanistan\", \"Afghanistan\", …\n$ continent &lt;fct&gt; Asia, Asia, Asia, Asia, Asia, Asia, Asia, Asia, Asia, Asia, …\n$ year      &lt;int&gt; 1952, 1957, 1962, 1967, 1972, 1977, 1982, 1987, 1992, 1997, …\n$ lifeExp   &lt;dbl&gt; 28.801, 30.332, 31.997, 34.020, 36.088, 38.438, 39.854, 40.8…\n$ pop       &lt;int&gt; 8425333, 9240934, 10267083, 11537966, 13079460, 14880372, 12…\n$ gdpPercap &lt;dbl&gt; 779.4453, 820.8530, 853.1007, 836.1971, 739.9811, 786.1134, …"
   },
   {
     "objectID": "posts/r-gapminder/index.html#continental-overview-in-2007",
     "href": "posts/r-gapminder/index.html#continental-overview-in-2007",
     "title": "Global Life Expectancy Trends (R)",
     "section": "Continental Overview in 2007",
-    "text": "Continental Overview in 2007\n\nsummary_2007 &lt;- gapminder |&gt;\n  filter(year == 2007) |&gt;\n  group_by(continent) |&gt;\n  summarise(\n    median_life_exp = median(lifeExp),\n    median_gdp = median(gdpPercap),\n    total_population = sum(as.numeric(pop)),\n    num_countries = n()\n  ) |&gt;\n  arrange(desc(median_life_exp))\n\nknitr::kable(summary_2007, digits = 2, caption = \"2007 Continental Summary\")\n\n\n2007 Continental Summary\n\n\n\n\n\n\n\n\n\ncontinent\nmedian_life_exp\nmedian_gdp\ntotal_population\nnum_countries\n\n\n\n\nOceania\n80.72\n29810.19\n24549947\n2\n\n\nEurope\n78.61\n28054.07\n586098529\n30\n\n\nAmericas\n72.90\n8948.10\n898871184\n25\n\n\nAsia\n72.40\n4471.06\n3811953827\n33\n\n\nAfrica\n52.93\n1452.27\n929539692\n52"
+    "text": "Continental Overview in 2007\nGrouping the 2007 data by continent to calculate median life expectancy and GDP per capita. Using medians reduces the impact of extreme outliers within each continent.\n\nsummary_2007 &lt;- gapminder |&gt;\n  filter(year == 2007) |&gt;\n  group_by(continent) |&gt;\n  summarise(\n    median_life_exp = median(lifeExp),\n    median_gdp = median(gdpPercap),\n    total_population = sum(as.numeric(pop)),\n    num_countries = n()\n  ) |&gt;\n  arrange(desc(median_life_exp))\n\nknitr::kable(summary_2007, digits = 2, caption = \"2007 Continental Summary\")\n\n\n2007 Continental Summary\n\n\n\n\n\n\n\n\n\ncontinent\nmedian_life_exp\nmedian_gdp\ntotal_population\nnum_countries\n\n\n\n\nOceania\n80.72\n29810.19\n24549947\n2\n\n\nEurope\n78.61\n28054.07\n586098529\n30\n\n\nAmericas\n72.90\n8948.10\n898871184\n25\n\n\nAsia\n72.40\n4471.06\n3811953827\n33\n\n\nAfrica\n52.93\n1452.27\n929539692\n52"
   },
   {
     "objectID": "posts/r-gapminder/index.html#longitudinal-life-expectancy-trajectory",
     "href": "posts/r-gapminder/index.html#longitudinal-life-expectancy-trajectory",
     "title": "Global Life Expectancy Trends (R)",
     "section": "Longitudinal Life Expectancy Trajectory",
-    "text": "Longitudinal Life Expectancy Trajectory\n\n\nCode\nyearly_trend &lt;- gapminder |&gt;\n  group_by(year) |&gt;\n  summarise(median_life_exp = median(lifeExp))\n\nplot(\n  yearly_trend$year,\n  yearly_trend$median_life_exp,\n  type = \"b\",\n  pch = 19,\n  col = \"navy\",\n  xlab = \"Year\",\n  ylab = \"Median Life Expectancy (Years)\",\n  main = \"Global Median Life Expectancy (1952 - 2007)\"\n)\ngrid()\n\n\n\n\n\n\n\n\nFigure 1: Global median life expectancy progression from 1952 to 2007.\n\n\n\n\n\n\nVisualizing Continental Life Expectancy (2007)\n\n\nCode\nlibrary(ggplot2)\n\nggplot(summary_2007, aes(x = continent, y = median_life_exp, fill = continent)) +\n  geom_bar(stat = \"identity\") +\n  labs(\n    title = \"Median Life Expectancy by Continent (2007)\",\n    x = \"Continent\",\n    y = \"Median Life Expectancy (years)\"\n  ) +\n  theme_minimal() +\n  scale_fill_brewer(palette = \"Set2\") +\n  theme(legend.position = \"none\")"
+    "text": "Longitudinal Life Expectancy Trajectory\nCalculating and plotting the global median life expectancy across all available survey years to view the aggregate trend over time.\n\nyearly_trend &lt;- gapminder |&gt;\n  group_by(year) |&gt;\n  summarise(median_life_exp = median(lifeExp))\n\nplot(\n  yearly_trend$year,\n  yearly_trend$median_life_exp,\n  type = \"b\",\n  pch = 19,\n  col = \"navy\",\n  xlab = \"Year\",\n  ylab = \"Median Life Expectancy (Years)\",\n  main = \"Global Median Life Expectancy (1952 - 2007)\"\n)\ngrid()\n\n\n\n\n\n\n\nFigure 1: Global median life expectancy progression from 1952 to 2007.\n\n\n\n\n\n\nVisualizing Continental Life Expectancy (2007)\nThis bar chart provides a direct visual comparison of median life expectancy across the five continents using the 2007 subset.\n\nlibrary(ggplot2)\n\nggplot(summary_2007, aes(x = continent, y = median_life_exp, fill = continent)) +\n  geom_bar(stat = \"identity\") +\n  labs(\n    title = \"Median Life Expectancy by Continent (2007)\",\n    x = \"Continent\",\n    y = \"Median Life Expectancy (years)\"\n  ) +\n  theme_minimal() +\n  scale_fill_brewer(palette = \"Set2\") +\n  theme(legend.position = \"none\")\n\n\n\n\n\n\n\n\n\n\nObservations from 2007 Data:\nHighest Life Expectancy: Oceania and Europe lead the dataset, with median life expectancies over 76 years.\nMiddle Range: The Americas and Asia group closely together in the low 70s.\nLowest Life Expectancy: Africa has the lowest median life expectancy at 52.9 years, creating a noticeable gap between it and the other four continents."
   },
   {
     "objectID": "posts/python-gapminder/index.html",
     "href": "posts/python-gapminder/index.html",
     "title": "Global Life Expectancy Trends (Python)",
     "section": "",
-    "text": "import sys\nprint(sys.executable)\n\n/Users/rohan/Documents/MDS/521_platforms-dsci/lab/DSCI_521-milestone_3/Rohan-CH.github.io/.venv/bin/python"
+    "text": "Verifying the active Python executable to confirm this document is rendering against the isolated uv virtual environment rather than the global system installation.\n\nimport sys\nprint(sys.executable)\nimport pandas as pd\nfrom gapminder import gapminder\n\n/Users/rohan/Documents/MDS/521_platforms-dsci/lab/DSCI_521-milestone_3/Rohan-CH.github.io/.venv/bin/python"
   },
   {
     "objectID": "posts/python-gapminder/index.html#environment-verification",
     "href": "posts/python-gapminder/index.html#environment-verification",
     "title": "Global Life Expectancy Trends (Python)",
     "section": "",
-    "text": "import sys\nprint(sys.executable)\n\n/Users/rohan/Documents/MDS/521_platforms-dsci/lab/DSCI_521-milestone_3/Rohan-CH.github.io/.venv/bin/python"
+    "text": "Verifying the active Python executable to confirm this document is rendering against the isolated uv virtual environment rather than the global system installation.\n\nimport sys\nprint(sys.executable)\nimport pandas as pd\nfrom gapminder import gapminder\n\n/Users/rohan/Documents/MDS/521_platforms-dsci/lab/DSCI_521-milestone_3/Rohan-CH.github.io/.venv/bin/python"
   },
   {
     "objectID": "posts/python-gapminder/index.html#dataset-overview",
     "href": "posts/python-gapminder/index.html#dataset-overview",
     "title": "Global Life Expectancy Trends (Python)",
     "section": "Dataset Overview",
-    "text": "Dataset Overview\nThe Gapminder dataset tracks historical socio-economic metrics across countries and continents between 1952 and 2007. Key variables include life expectancy (lifeExp), population (pop), and GDP per capita (gdpPercap).\n\nimport pandas as pd\nfrom gapminder import gapminder\n\ngapminder.head()\n\n\n\n\n\n\n\n\ncountry\ncontinent\nyear\nlifeExp\npop\ngdpPercap\n\n\n\n\n0\nAfghanistan\nAsia\n1952\n28.801\n8425333\n779.445314\n\n\n1\nAfghanistan\nAsia\n1957\n30.332\n9240934\n820.853030\n\n\n2\nAfghanistan\nAsia\n1962\n31.997\n10267083\n853.100710\n\n\n3\nAfghanistan\nAsia\n1967\n34.020\n11537966\n836.197138\n\n\n4\nAfghanistan\nAsia\n1972\n36.088\n13079460\n739.981106"
+    "text": "Dataset Overview\nThe Gapminder dataset provides historical socio-economic metrics across countries and continents from 1952 to 2007. Key variables include life expectancy (lifeExp), population (pop), and GDP per capita (gdpPercap).\n\ngapminder.head()\n\n\n\n\n\n\n\n\ncountry\ncontinent\nyear\nlifeExp\npop\ngdpPercap\n\n\n\n\n0\nAfghanistan\nAsia\n1952\n28.801\n8425333\n779.445314\n\n\n1\nAfghanistan\nAsia\n1957\n30.332\n9240934\n820.853030\n\n\n2\nAfghanistan\nAsia\n1962\n31.997\n10267083\n853.100710\n\n\n3\nAfghanistan\nAsia\n1967\n34.020\n11537966\n836.197138\n\n\n4\nAfghanistan\nAsia\n1972\n36.088\n13079460\n739.981106"
   },
   {
     "objectID": "posts/python-gapminder/index.html#regional-summary-2007",
     "href": "posts/python-gapminder/index.html#regional-summary-2007",
     "title": "Global Life Expectancy Trends (Python)",
     "section": "Regional Summary (2007)",
-    "text": "Regional Summary (2007)\nComparing median life expectancy and GDP per capita across continents in the most recent survey year:\n\nrecent_summary = (\n    gapminder[gapminder[\"year\"] == 2007]\n    .groupby(\"continent\")\n    .agg(\n        median_life_exp=(\"lifeExp\", \"median\"),\n        median_gdp=(\"gdpPercap\", \"median\"),\n        total_pop=(\"pop\", \"sum\"),\n        country_count=(\"country\", \"count\")\n    )\n    .sort_values(by=\"median_life_exp\", ascending=False)\n    .reset_index()\n)\n\nrecent_summary\n\n\n\n\n\n\n\n\ncontinent\nmedian_life_exp\nmedian_gdp\ntotal_pop\ncountry_count\n\n\n\n\n0\nOceania\n80.7195\n29810.188275\n24549947\n2\n\n\n1\nEurope\n78.6085\n28054.065790\n586098529\n30\n\n\n2\nAmericas\n72.8990\n8948.102923\n898871184\n25\n\n\n3\nAsia\n72.3960\n4471.061906\n3811953827\n33\n\n\n4\nAfrica\n52.9265\n1452.267078\n929539692\n52"
+    "text": "Regional Summary (2007)\nAggregating the 2007 data by continent establishes a modern baseline. Using median values for life expectancy and GDP per capita minimizes the skew from extreme national outliers.\n\nrecent_summary = (\n    gapminder[gapminder[\"year\"] == 2007]\n    .groupby(\"continent\")\n    .agg(\n        median_life_exp=(\"lifeExp\", \"median\"),\n        median_gdp=(\"gdpPercap\", \"median\"),\n        total_pop=(\"pop\", \"sum\"),\n        country_count=(\"country\", \"count\")\n    )\n    .sort_values(by=\"median_life_exp\", ascending=False)\n    .reset_index()\n)\n\nrecent_summary\n\n\n\n\n\n\n\n\ncontinent\nmedian_life_exp\nmedian_gdp\ntotal_pop\ncountry_count\n\n\n\n\n0\nOceania\n80.7195\n29810.188275\n24549947\n2\n\n\n1\nEurope\n78.6085\n28054.065790\n586098529\n30\n\n\n2\nAmericas\n72.8990\n8948.102923\n898871184\n25\n\n\n3\nAsia\n72.3960\n4471.061906\n3811953827\n33\n\n\n4\nAfrica\n52.9265\n1452.267078\n929539692\n52"
   },
   {
     "objectID": "posts/python-gapminder/index.html#year-progress-1952-vs-2007",
     "href": "posts/python-gapminder/index.html#year-progress-1952-vs-2007",
     "title": "Global Life Expectancy Trends (Python)",
     "section": "55-Year Progress (1952 vs 2007)",
-    "text": "55-Year Progress (1952 vs 2007)\n\n\nCode\ncomparison = (\n    gapminder[gapminder[\"year\"].isin([1952, 2007])]\n    .groupby([\"continent\", \"year\"])[\"lifeExp\"]\n    .mean()\n    .unstack()\n    .rename(columns={1952: \"life_exp_1952\", 2007: \"life_exp_2007\"})\n)\n\ncomparison[\"gain_years\"] = comparison[\"life_exp_2007\"] - comparison[\"life_exp_1952\"]\ncomparison.round(2)\n\n\n\n\n\n\n\n\nyear\nlife_exp_1952\nlife_exp_2007\ngain_years\n\n\ncontinent\n\n\n\n\n\n\n\nAfrica\n39.14\n54.81\n15.67\n\n\nAmericas\n53.28\n73.61\n20.33\n\n\nAsia\n46.31\n70.73\n24.41\n\n\nEurope\n64.41\n77.65\n13.24\n\n\nOceania\n69.26\n80.72\n11.46\n\n\n\n\n\n\n\nEvery continent experienced double-digit gains in average life expectancy between 1952 and 2007, with Asia demonstrating the largest absolute increase over that span.\n\nVisualizing Regional Life Expectancy (2007)\n\n\nCode\nimport matplotlib.pyplot as plt\n\nfig, ax = plt.subplots(figsize=(8, 5))\nax.bar(recent_summary['continent'], recent_summary['median_life_exp'], color='royalblue')\nax.set_title('Median Life Expectancy by Continent (2007)')\nax.set_ylabel('Median Life Expectancy (years)')\nax.set_xlabel('Continent')\nplt.show()"
+    "text": "55-Year Progress (1952 vs 2007)\nComparing the earliest and latest available years highlights the absolute growth in global life expectancy during the post-WWII era.\n\ncomparison = (\n    gapminder[gapminder[\"year\"].isin([1952, 2007])]\n    .groupby([\"continent\", \"year\"])[\"lifeExp\"]\n    .mean()\n    .unstack()\n    .rename(columns={1952: \"life_exp_1952\", 2007: \"life_exp_2007\"})\n)\n\ncomparison[\"gain_years\"] = comparison[\"life_exp_2007\"] - comparison[\"life_exp_1952\"]\ncomparison.round(2)\n\n\n\n\n\n\n\nyear\nlife_exp_1952\nlife_exp_2007\ngain_years\n\n\ncontinent\n\n\n\n\n\n\n\nAfrica\n39.14\n54.81\n15.67\n\n\nAmericas\n53.28\n73.61\n20.33\n\n\nAsia\n46.31\n70.73\n24.41\n\n\nEurope\n64.41\n77.65\n13.24\n\n\nOceania\n69.26\n80.72\n11.46\n\n\n\n\n\n\n\nEvery continent saw double-digit growth in average life expectancy over this 55-year span. Asia recorded the largest absolute increase, adding over 24 years to its average.\n\nVisualizing Regional Life Expectancy (2007)\n\nimport matplotlib.pyplot as plt\n\nfig, ax = plt.subplots(figsize=(8, 5))\nax.bar(recent_summary['continent'], recent_summary['median_life_exp'], color='royalblue')\nax.set_title('Median Life Expectancy by Continent (2007)')\nax.set_ylabel('Median Life Expectancy (years)')\nax.set_xlabel('Continent')\n\nfor i, v in enumerate(recent_summary['median_life_exp']):\n    ax.text(i, v - 4, f\"{v:.1f}\", color='white', fontweight='bold', ha='center')\n\nplt.show()\n\n\n\n\n\n\n\n\n\n\nKey Findings:\nLeading Regions: Oceania and Europe rank highest, with median life expectancies surpassing 80 and 76 years, respectively.\nThe Middle Tier: The Americas and Asia cluster in the low 70s, reflecting the rapid developmental strides in Asia that closed the historical gap with the Americas.\nThe Global Gap: Africa trails significantly with a median life expectancy of 52.9 years in 2007, a roughly 20-year deficit compared to the next lowest region."
   },
   {
     "objectID": "posts/first-weeks/index.html",
@@ -95,35 +95,35 @@
     "href": "posts/bonus-interoperability/index.html",
     "title": "Python and R Interoperability Bonus",
     "section": "",
-    "text": "By default, R might try to use your system’s global Python. To ensure true reproducibility, we explicitly tell the reticulate package to use the Python binary inside our uv virtual environment.\n\nlibrary(reticulate)\n\n# Force reticulate to use the project's .venv\nuse_virtualenv(\"../../.venv\", required = TRUE)"
+    "text": "Configuring the reticulate package to target the project’s isolated uv virtual environment guarantees the code executes using project-specific dependencies rather than the global system installation.\n\nlibrary(reticulate)\n\nuse_virtualenv(\"../../.venv\", required = TRUE)"
   },
   {
     "objectID": "posts/bonus-interoperability/index.html#pointing-reticulate-to-the-virtual-environment",
     "href": "posts/bonus-interoperability/index.html#pointing-reticulate-to-the-virtual-environment",
     "title": "Python and R Interoperability Bonus",
     "section": "",
-    "text": "By default, R might try to use your system’s global Python. To ensure true reproducibility, we explicitly tell the reticulate package to use the Python binary inside our uv virtual environment.\n\nlibrary(reticulate)\n\n# Force reticulate to use the project's .venv\nuse_virtualenv(\"../../.venv\", required = TRUE)"
+    "text": "Configuring the reticulate package to target the project’s isolated uv virtual environment guarantees the code executes using project-specific dependencies rather than the global system installation.\n\nlibrary(reticulate)\n\nuse_virtualenv(\"../../.venv\", required = TRUE)"
   },
   {
     "objectID": "posts/bonus-interoperability/index.html#creating-data-in-r",
     "href": "posts/bonus-interoperability/index.html#creating-data-in-r",
     "title": "Python and R Interoperability Bonus",
     "section": "Creating Data in R",
-    "text": "Creating Data in R\nFirst, let’s create a simple dataframe using R.\n\n# Create a small dataset in R\nr_data &lt;- data.frame(\n  id = 1:5,\n  score = c(85, 92, 78, 90, 88)\n)\nprint(r_data)\n\n  id score\n1  1    85\n2  2    92\n3  3    78\n4  4    90\n5  5    88"
+    "text": "Creating Data in R\nInitializing a baseline dataframe natively in R.\n\nr_data &lt;- data.frame(\n  id = 1:5,\n  score = c(85, 92, 78, 90, 88)\n)\nprint(r_data)\n\n  id score\n1  1    85\n2  2    92\n3  3    78\n4  4    90\n5  5    88"
   },
   {
     "objectID": "posts/bonus-interoperability/index.html#reading-r-data-into-python",
     "href": "posts/bonus-interoperability/index.html#reading-r-data-into-python",
     "title": "Python and R Interoperability Bonus",
     "section": "Reading R Data into Python",
-    "text": "Reading R Data into Python\nNow, we switch to a Python chunk. We can read the R object natively into Python by calling r.name (where “name” is the variable we created in R).\n\nimport pandas as pd\n\n# Access the R dataframe using r.r_data\npython_df = r.r_data\n\n# Modify the dataframe using Python (adding a curve to the score)\npython_df['curved_score'] = python_df['score'] + 5\nprint(python_df)\n\n   id  score  curved_score\n0   1   85.0          90.0\n1   2   92.0          97.0\n2   3   78.0          83.0\n3   4   90.0          95.0\n4   5   88.0          93.0"
+    "text": "Reading R Data into Python\nAccessing the R environment via the r. object in Python. A new column is calculated and appended to the dataframe using pandas.\n\nimport pandas as pd\n\npython_df = r.r_data\npython_df['curved_score'] = python_df['score'] + 5\n\nprint(python_df)\n\n   id  score  curved_score\n0   1   85.0          90.0\n1   2   92.0          97.0\n2   3   78.0          83.0\n3   4   90.0          95.0\n4   5   88.0          93.0"
   },
   {
     "objectID": "posts/bonus-interoperability/index.html#returning-python-data-back-to-r",
     "href": "posts/bonus-interoperability/index.html#returning-python-data-back-to-r",
     "title": "Python and R Interoperability Bonus",
     "section": "Returning Python Data back to R",
-    "text": "Returning Python Data back to R\nFinally, we switch back to an R chunk. We can retrieve the modified dataframe from Python by calling py$name.\n\n# Access the modified Python dataframe using py$python_df\nfinal_r_data &lt;- py$python_df\n\n# Display the curved scores back in R\nprint(final_r_data)\n\n  id score curved_score\n1  1    85           90\n2  2    92           97\n3  3    78           83\n4  4    90           95\n5  5    88           93"
+    "text": "Returning Python Data back to R\nRetrieving the transformed object from the Python environment back into R using the py$ object.\n\nfinal_r_data &lt;- py$python_df\n\nprint(final_r_data)\n\n  id score curved_score\n1  1    85           90\n2  2    92           97\n3  3    78           83\n4  4    90           95\n5  5    88           93"
   },
   {
     "objectID": "about.html",

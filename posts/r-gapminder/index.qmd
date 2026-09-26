@@ -5,29 +5,40 @@ author: "Rohan Chakkadath"
 date: 2026-09-23
 ---
 
+<style>
+  /* A light steel blue-grey tint inspired by the official R project logo */
+  body {
+    background-color: #f0f4f8;
+  }
+</style>
+
 ## Environment Verification
 
+Checking the active library paths to ensure packages are loaded from the isolated project environment.
+
 ```{r}
+#| message: false
+#| warning: false
 .libPaths()
+library(gapminder)
+library(dplyr)
 ```
 
 ## Dataset Overview
 
-The [Gapminder dataset](https://www.gapminder.org/data/) provides country-level records over 5-year intervals from 1952 to 2007.
+The [Gapminder dataset](https://www.gapminder.org/data/) provides country-level records over 5-year intervals from 1952 to 2007. The `glimpse` output below shows the structure of the data, including population, continent, and life expectancy.
 
 ```{r}
 #| echo: true
 #| warning: false
 #| message: false
-#| 
-
-library(gapminder)
-library(dplyr)
 
 glimpse(gapminder)
 ```
 
 ## Continental Overview in 2007
+
+Grouping the 2007 data by continent to calculate median life expectancy and GDP per capita. Using medians reduces the impact of extreme outliers within each continent.
 
 ```{r}
 #| echo: true
@@ -49,10 +60,12 @@ knitr::kable(summary_2007, digits = 2, caption = "2007 Continental Summary")
 
 ## Longitudinal Life Expectancy Trajectory
 
+Calculating and plotting the global median life expectancy across all available survey years to view the aggregate trend over time.
+
 ```{r}
 #| echo: true
 #| label: fig-life-exp-trend
-#| code-fold: true
+#| code-fold: false
 #| fig-cap: "Global median life expectancy progression from 1952 to 2007."
 
 yearly_trend <- gapminder |>
@@ -74,11 +87,13 @@ grid()
 
 ### Visualizing Continental Life Expectancy (2007)
 
+This bar chart provides a direct visual comparison of median life expectancy across the five continents using the 2007 subset.
+
 ```{r}
 #| echo: true
 #| warning: false
 #| message: false
-#| code-fold: true
+#| code-fold: false
 
 library(ggplot2)
 
@@ -93,3 +108,11 @@ ggplot(summary_2007, aes(x = continent, y = median_life_exp, fill = continent)) 
   scale_fill_brewer(palette = "Set2") +
   theme(legend.position = "none")
 ```
+
+### Observations from 2007 Data:
+
+**Highest Life Expectancy:** Oceania and Europe lead the dataset, with median life expectancies over 76 years.
+   
+**Middle Range:** The Americas and Asia group closely together in the low 70s.
+  
+**Lowest Life Expectancy:** Africa has the lowest median life expectancy at 52.9 years, creating a noticeable gap between it and the other four continents.
