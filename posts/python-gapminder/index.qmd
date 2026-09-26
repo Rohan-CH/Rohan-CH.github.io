@@ -101,10 +101,10 @@ for i, v in enumerate(recent_summary['median_life_exp']):
 plt.show()
 ```
 
-### Key Findings:
+#### Key Findings:
 
-**Leading Regions:** Oceania and Europe rank highest, with median life expectancies surpassing 80 and 76 years, respectively. 
+Leading Regions: Oceania and Europe rank highest, with median life expectancies surpassing 80 and 76 years, respectively. 
 
-**The Middle Tier:** The Americas and Asia cluster in the low 70s, reflecting the rapid developmental strides in Asia that closed the historical gap with the Americas.
+The Middle Tier: The Americas and Asia cluster in the low 70s, reflecting the rapid developmental strides in Asia that closed the historical gap with the Americas.
 
-**The Global Gap:** Africa trails significantly with a median life expectancy of 52.9 years in 2007, a roughly 20-year deficit compared to the next lowest region.
+The Global Gap: Africa trails significantly with a median life expectancy of 52.9 years in 2007, a roughly 20-year deficit compared to the next lowest region.

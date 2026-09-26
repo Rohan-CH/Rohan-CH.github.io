@@ -109,10 +109,10 @@ ggplot(summary_2007, aes(x = continent, y = median_life_exp, fill = continent)) 
   theme(legend.position = "none")
 ```
 
-### Observations from 2007 Data:
+#### Observations from 2007 Data:
 
-**Highest Life Expectancy:** Oceania and Europe lead the dataset, with median life expectancies over 76 years.
+Highest Life Expectancy: Oceania and Europe lead the dataset, with median life expectancies over 76 years.
    
-**Middle Range:** The Americas and Asia group closely together in the low 70s.
+Middle Range: The Americas and Asia group closely together in the low 70s.
   
-**Lowest Life Expectancy:** Africa has the lowest median life expectancy at 52.9 years, creating a noticeable gap between it and the other four continents.
+Lowest Life Expectancy: Africa has the lowest median life expectancy at 52.9 years, creating a noticeable gap between it and the other four continents.
