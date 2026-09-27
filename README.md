@@ -25,9 +25,9 @@ uv sync
 ```
 
 **Step C: Restore the R Environment**
-Open an R console from the root of the project directory and run:
-```r
-renv::restore()
+Run this in your shell to use `renv` to install the R dependencies from the lockfile:
+```bash
+Rscript -e "renv::restore(prompt = FALSE)"
 ```
 *(Type `y` if prompted to proceed).*
 
