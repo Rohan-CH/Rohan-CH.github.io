@@ -164,6 +164,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#creating-data-in-r" id="toc-creating-data-in-r" class="nav-link" data-scroll-target="#creating-data-in-r">Creating Data in R</a></li>
   <li><a href="#reading-r-data-into-python" id="toc-reading-r-data-into-python" class="nav-link" data-scroll-target="#reading-r-data-into-python">Reading R Data into Python</a></li>
   <li><a href="#returning-python-data-back-to-r" id="toc-returning-python-data-back-to-r" class="nav-link" data-scroll-target="#returning-python-data-back-to-r">Returning Python Data back to R</a></li>
+  <li><a href="#visualizing-the-round-trip-data" id="toc-visualizing-the-round-trip-data" class="nav-link" data-scroll-target="#visualizing-the-round-trip-data">Visualizing the Round-Trip Data</a></li>
   </ul>
 </nav>
     </div>
@@ -223,7 +224,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gapminder)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Grab the first 5 rows of the dataset</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Grab the first 5 rows of the dataset (Afghanistan 1952-1972)</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>r_data <span class="ot">&lt;-</span> <span class="fu">head</span>(gapminder, <span class="dv">5</span>)</span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(r_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -272,6 +273,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 3 Afghanistan      Asia 1962  31.997 10267083  853.1007        383.964
 4 Afghanistan      Asia 1967  34.020 11537966  836.1971        408.240
 5 Afghanistan      Asia 1972  36.088 13079460  739.9811        433.056</code></pre>
+</div>
+</div>
+</section>
+<section id="visualizing-the-round-trip-data" class="level2">
+<h2 class="anchored" data-anchor-id="visualizing-the-round-trip-data">Visualizing the Round-Trip Data</h2>
+<p>To confirm the data remains fully functional for analysis after passing between languages, we can plot the newly calculated <code>lifeExp_months</code> column back in R.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(final_r_data, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(year), <span class="at">y =</span> lifeExp_months)) <span class="sc">+</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"steelblue"</span>) <span class="sc">+</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Afghanistan Life Expectancy (1952-1972)"</span>,</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Year"</span>,</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Life Expectancy (Months)"</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p><strong>Interoperability Highlights:</strong></p>

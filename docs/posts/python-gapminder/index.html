@@ -219,7 +219,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Data Source:</strong> The <a href="https://www.gapminder.org/data/">Gapminder dataset</a><br>
 <strong>License:</strong> Free to use under the <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International (CC BY 4.0)</a> license.</p>
 <p>The dataset provides historical socio-economic metrics across countries and continents. Key variables include life expectancy (<code>lifeExp</code>), population (<code>pop</code>), and GDP per capita (<code>gdpPercap</code>).</p>
-<div id="0c6250b2" class="cell" data-execution_count="1">
+<div id="4707153b" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gapminder <span class="im">import</span> gapminder</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -296,7 +296,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="regional-summary-2007" class="level2">
 <h2 class="anchored" data-anchor-id="regional-summary-2007">Regional Summary (2007)</h2>
 <p>Aggregating the 2007 data by continent establishes a modern baseline. Using median values for life expectancy and GDP per capita minimizes the skew from extreme national outliers.</p>
-<div id="f2378cf9" class="cell" data-execution_count="2">
+<div id="23fdb524" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>recent_summary <span class="op">=</span> (</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    gapminder[gapminder[<span class="st">"year"</span>] <span class="op">==</span> <span class="dv">2007</span>]</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    .groupby(<span class="st">"continent"</span>)</span>
@@ -377,7 +377,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="top-5-countries-by-life-expectancy-2007" class="level2">
 <h2 class="anchored" data-anchor-id="top-5-countries-by-life-expectancy-2007">Top 5 Countries by Life Expectancy (2007)</h2>
 <p>To see which specific nations are driving the upper boundaries of these regional medians, we can isolate the top five countries globally.</p>
-<div id="fd0e0ccd" class="cell" data-execution_count="3">
+<div id="132d515b" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>top_countries <span class="op">=</span> (</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    gapminder[gapminder[<span class="st">"year"</span>] <span class="op">==</span> <span class="dv">2007</span>]</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    .nlargest(<span class="dv">5</span>, <span class="st">"lifeExp"</span>)</span>
@@ -446,7 +446,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="year-progress-1952-vs-2007" class="level2">
 <h2 class="anchored" data-anchor-id="year-progress-1952-vs-2007">55-Year Progress (1952 vs 2007)</h2>
 <p>Comparing the earliest and latest available years highlights the absolute growth in global life expectancy during the post-WWII era.</p>
-<div id="12c7b3d8" class="cell" data-execution_count="4">
+<div id="6eb7c869" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>comparison <span class="op">=</span> (</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    gapminder[gapminder[<span class="st">"year"</span>].isin([<span class="dv">1952</span>, <span class="dv">2007</span>])]</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    .groupby([<span class="st">"continent"</span>, <span class="st">"year"</span>])[<span class="st">"lifeExp"</span>]</span>
@@ -516,7 +516,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Every continent saw double-digit growth in average life expectancy over this 55-year span. Asia recorded the largest absolute increase, adding over 24 years to its average.</p>
 <section id="visualizing-regional-life-expectancy-2007" class="level3">
 <h3 class="anchored" data-anchor-id="visualizing-regional-life-expectancy-2007">Visualizing Regional Life Expectancy (2007)</h3>
-<div id="18f8e9fc" class="cell" data-execution_count="5">
+<div id="1ce8b320" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">5</span>))</span>

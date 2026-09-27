@@ -109,7 +109,7 @@
     "href": "posts/bonus-interoperability/index.html#creating-data-in-r",
     "title": "Python and R Interoperability Bonus",
     "section": "Creating Data in R",
-    "text": "Creating Data in R\nData Source: The Gapminder dataset\nLicense: Free to use under the Creative Commons Attribution 4.0 International (CC BY 4.0) license.\nWe will load a small sample natively in R to pass into Python.\n\nlibrary(gapminder)\n\n# Grab the first 5 rows of the dataset\nr_data &lt;- head(gapminder, 5)\nprint(r_data)\n\n# A tibble: 5 × 6\n  country     continent  year lifeExp      pop gdpPercap\n  &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;\n1 Afghanistan Asia       1952    28.8  8425333      779.\n2 Afghanistan Asia       1957    30.3  9240934      821.\n3 Afghanistan Asia       1962    32.0 10267083      853.\n4 Afghanistan Asia       1967    34.0 11537966      836.\n5 Afghanistan Asia       1972    36.1 13079460      740."
+    "text": "Creating Data in R\nData Source: The Gapminder dataset\nLicense: Free to use under the Creative Commons Attribution 4.0 International (CC BY 4.0) license.\nWe will load a small sample natively in R to pass into Python.\n\nlibrary(gapminder)\n\n# Grab the first 5 rows of the dataset (Afghanistan 1952-1972)\nr_data &lt;- head(gapminder, 5)\nprint(r_data)\n\n# A tibble: 5 × 6\n  country     continent  year lifeExp      pop gdpPercap\n  &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;\n1 Afghanistan Asia       1952    28.8  8425333      779.\n2 Afghanistan Asia       1957    30.3  9240934      821.\n3 Afghanistan Asia       1962    32.0 10267083      853.\n4 Afghanistan Asia       1967    34.0 11537966      836.\n5 Afghanistan Asia       1972    36.1 13079460      740."
   },
   {
     "objectID": "posts/bonus-interoperability/index.html#reading-r-data-into-python",
@@ -123,7 +123,14 @@
     "href": "posts/bonus-interoperability/index.html#returning-python-data-back-to-r",
     "title": "Python and R Interoperability Bonus",
     "section": "Returning Python Data back to R",
-    "text": "Returning Python Data back to R\nRetrieving the transformed object from the Python environment back into R using the py$ object.\n\nfinal_r_data &lt;- py$python_df\n\nprint(final_r_data)\n\n      country continent year lifeExp      pop gdpPercap lifeExp_months\n1 Afghanistan      Asia 1952  28.801  8425333  779.4453        345.612\n2 Afghanistan      Asia 1957  30.332  9240934  820.8530        363.984\n3 Afghanistan      Asia 1962  31.997 10267083  853.1007        383.964\n4 Afghanistan      Asia 1967  34.020 11537966  836.1971        408.240\n5 Afghanistan      Asia 1972  36.088 13079460  739.9811        433.056\n\n\nInteroperability Highlights:\n\nSeamless Translation: The reticulate package automatically converts R data.frame objects into Python pandas DataFrames.\nState Retention: Variables and dataframe columns modified in the Python environment are preserved and instantly accessible when returning to the R workspace."
+    "text": "Returning Python Data back to R\nRetrieving the transformed object from the Python environment back into R using the py$ object.\n\nfinal_r_data &lt;- py$python_df\n\nprint(final_r_data)\n\n      country continent year lifeExp      pop gdpPercap lifeExp_months\n1 Afghanistan      Asia 1952  28.801  8425333  779.4453        345.612\n2 Afghanistan      Asia 1957  30.332  9240934  820.8530        363.984\n3 Afghanistan      Asia 1962  31.997 10267083  853.1007        383.964\n4 Afghanistan      Asia 1967  34.020 11537966  836.1971        408.240\n5 Afghanistan      Asia 1972  36.088 13079460  739.9811        433.056"
+  },
+  {
+    "objectID": "posts/bonus-interoperability/index.html#visualizing-the-round-trip-data",
+    "href": "posts/bonus-interoperability/index.html#visualizing-the-round-trip-data",
+    "title": "Python and R Interoperability Bonus",
+    "section": "Visualizing the Round-Trip Data",
+    "text": "Visualizing the Round-Trip Data\nTo confirm the data remains fully functional for analysis after passing between languages, we can plot the newly calculated lifeExp_months column back in R.\n\nlibrary(ggplot2)\n\nggplot(final_r_data, aes(x = factor(year), y = lifeExp_months)) +\n  geom_col(fill = \"steelblue\") +\n  theme_minimal() +\n  labs(\n    title = \"Afghanistan Life Expectancy (1952-1972)\",\n    x = \"Year\",\n    y = \"Life Expectancy (Months)\"\n  )\n\n\n\n\n\n\n\n\nInteroperability Highlights:\n\nSeamless Translation: The reticulate package automatically converts R data.frame objects into Python pandas DataFrames.\nState Retention: Variables and dataframe columns modified in the Python environment are preserved and instantly accessible when returning to the R workspace."
   },
   {
     "objectID": "about.html",

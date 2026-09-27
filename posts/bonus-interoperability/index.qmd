@@ -36,7 +36,7 @@ We will load a small sample natively in R to pass into Python.
 
 library(gapminder)
 
-# Grab the first 5 rows of the dataset
+# Grab the first 5 rows of the dataset (Afghanistan 1952-1972)
 r_data <- head(gapminder, 5)
 print(r_data)
 ```
@@ -62,6 +62,27 @@ Retrieving the transformed object from the Python environment back into R using 
 final_r_data <- py$python_df
 
 print(final_r_data)
+```
+
+## Visualizing the Round-Trip Data
+
+To confirm the data remains fully functional for analysis after passing between languages, we can plot the newly calculated `lifeExp_months` column back in R. 
+
+```{r}
+#| echo: true
+#| warning: false
+#| message: false
+
+library(ggplot2)
+
+ggplot(final_r_data, aes(x = factor(year), y = lifeExp_months)) +
+  geom_col(fill = "steelblue") +
+  theme_minimal() +
+  labs(
+    title = "Afghanistan Life Expectancy (1952-1972)",
+    x = "Year",
+    y = "Life Expectancy (Months)"
+  )
 ```
 
 **Interoperability Highlights:**
