@@ -212,46 +212,49 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Configuring the <code>reticulate</code> package to target the project’s isolated <code>uv</code> virtual environment guarantees the code executes using project-specific dependencies rather than the global system installation.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reticulate)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">use_virtualenv</span>(<span class="st">"../../.venv"</span>, <span class="at">required =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">use_virtualenv</span>(<span class="st">"../../.venv"</span>, <span class="at">required =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="creating-data-in-r" class="level2">
 <h2 class="anchored" data-anchor-id="creating-data-in-r">Creating Data in R</h2>
-<p>Initializing a baseline dataframe natively in R.</p>
+<p><strong>Data Source:</strong> The <a href="https://www.gapminder.org/data/">Gapminder dataset</a><br>
+<strong>License:</strong> Free to use under the <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International (CC BY 4.0)</a> license.</p>
+<p>We will load a small sample natively in R to pass into Python.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>r_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">score =</span> <span class="fu">c</span>(<span class="dv">85</span>, <span class="dv">92</span>, <span class="dv">78</span>, <span class="dv">90</span>, <span class="dv">88</span>)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gapminder)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Grab the first 5 rows of the dataset</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>r_data <span class="ot">&lt;-</span> <span class="fu">head</span>(gapminder, <span class="dv">5</span>)</span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(r_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  id score
-1  1    85
-2  2    92
-3  3    78
-4  4    90
-5  5    88</code></pre>
+<pre><code># A tibble: 5 × 6
+  country     continent  year lifeExp      pop gdpPercap
+  &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;
+1 Afghanistan Asia       1952    28.8  8425333      779.
+2 Afghanistan Asia       1957    30.3  9240934      821.
+3 Afghanistan Asia       1962    32.0 10267083      853.
+4 Afghanistan Asia       1967    34.0 11537966      836.
+5 Afghanistan Asia       1972    36.1 13079460      740.</code></pre>
 </div>
 </div>
 </section>
 <section id="reading-r-data-into-python" class="level2">
 <h2 class="anchored" data-anchor-id="reading-r-data-into-python">Reading R Data into Python</h2>
-<p>Accessing the R environment via the <code>r.</code> object in Python. A new column is calculated and appended to the dataframe using <code>pandas</code>.</p>
+<p>Accessing the R environment via the <code>r.</code> object in Python. A new column calculating life expectancy in months is appended to the dataframe using <code>pandas</code>.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>python_df <span class="op">=</span> r.r_data</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>python_df[<span class="st">'curved_score'</span>] <span class="op">=</span> python_df[<span class="st">'score'</span>] <span class="op">+</span> <span class="dv">5</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>python_df[<span class="st">'lifeExp_months'</span>] <span class="op">=</span> python_df[<span class="st">'lifeExp'</span>] <span class="op">*</span> <span class="dv">12</span></span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(python_df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   id  score  curved_score
-0   1   85.0          90.0
-1   2   92.0          97.0
-2   3   78.0          83.0
-3   4   90.0          95.0
-4   5   88.0          93.0</code></pre>
+<pre><code>       country continent  year  lifeExp       pop   gdpPercap  lifeExp_months
+0  Afghanistan      Asia  1952   28.801   8425333  779.445314         345.612
+1  Afghanistan      Asia  1957   30.332   9240934  820.853030         363.984
+2  Afghanistan      Asia  1962   31.997  10267083  853.100710         383.964
+3  Afghanistan      Asia  1967   34.020  11537966  836.197138         408.240
+4  Afghanistan      Asia  1972   36.088  13079460  739.981106         433.056</code></pre>
 </div>
 </div>
 </section>
@@ -263,12 +266,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(final_r_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  id score curved_score
-1  1    85           90
-2  2    92           97
-3  3    78           83
-4  4    90           95
-5  5    88           93</code></pre>
+<pre><code>      country continent year lifeExp      pop gdpPercap lifeExp_months
+1 Afghanistan      Asia 1952  28.801  8425333  779.4453        345.612
+2 Afghanistan      Asia 1957  30.332  9240934  820.8530        363.984
+3 Afghanistan      Asia 1962  31.997 10267083  853.1007        383.964
+4 Afghanistan      Asia 1967  34.020 11537966  836.1971        408.240
+5 Afghanistan      Asia 1972  36.088 13079460  739.9811        433.056</code></pre>
 </div>
 </div>
 

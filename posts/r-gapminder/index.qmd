@@ -26,6 +26,9 @@ library(dplyr)
 
 ## Dataset Overview
 
+**Data Source:** The [Gapminder dataset](https://www.gapminder.org/data/)  
+**License:** Free to use under the [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/) license.
+
 The [Gapminder dataset](https://www.gapminder.org/data/) provides country-level records over 5-year intervals from 1952 to 2007. The `glimpse` output below shows the structure of the data, including population, continent, and life expectancy.
 
 ```{r}

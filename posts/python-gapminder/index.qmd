@@ -25,6 +25,9 @@ from gapminder import gapminder
 
 ## Dataset Overview
 
+**Data Source:** The [Gapminder dataset](https://www.gapminder.org/data/)  
+**License:** Free to use under the [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/) license.
+
 The [Gapminder dataset](https://www.gapminder.org/data/) provides historical socio-economic metrics across countries and continents from 1952 to 2007. Key variables include life expectancy (`lifeExp`), population (`pop`), and GDP per capita (`gdpPercap`).
 
 ```{python}

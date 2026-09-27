@@ -32,7 +32,7 @@
     "href": "posts/r-gapminder/index.html#dataset-overview",
     "title": "Global Life Expectancy Trends (R)",
     "section": "Dataset Overview",
-    "text": "Dataset Overview\nThe Gapminder dataset provides country-level records over 5-year intervals from 1952 to 2007. The glimpse output below shows the structure of the data, including population, continent, and life expectancy.\n\nglimpse(gapminder)\n\nRows: 1,704\nColumns: 6\n$ country   &lt;fct&gt; \"Afghanistan\", \"Afghanistan\", \"Afghanistan\", \"Afghanistan\", …\n$ continent &lt;fct&gt; Asia, Asia, Asia, Asia, Asia, Asia, Asia, Asia, Asia, Asia, …\n$ year      &lt;int&gt; 1952, 1957, 1962, 1967, 1972, 1977, 1982, 1987, 1992, 1997, …\n$ lifeExp   &lt;dbl&gt; 28.801, 30.332, 31.997, 34.020, 36.088, 38.438, 39.854, 40.8…\n$ pop       &lt;int&gt; 8425333, 9240934, 10267083, 11537966, 13079460, 14880372, 12…\n$ gdpPercap &lt;dbl&gt; 779.4453, 820.8530, 853.1007, 836.1971, 739.9811, 786.1134, …"
+    "text": "Dataset Overview\nData Source: The Gapminder dataset\nLicense: Free to use under the Creative Commons Attribution 4.0 International (CC BY 4.0) license.\nThe Gapminder dataset provides country-level records over 5-year intervals from 1952 to 2007. The glimpse output below shows the structure of the data, including population, continent, and life expectancy.\n\nglimpse(gapminder)\n\nRows: 1,704\nColumns: 6\n$ country   &lt;fct&gt; \"Afghanistan\", \"Afghanistan\", \"Afghanistan\", \"Afghanistan\", …\n$ continent &lt;fct&gt; Asia, Asia, Asia, Asia, Asia, Asia, Asia, Asia, Asia, Asia, …\n$ year      &lt;int&gt; 1952, 1957, 1962, 1967, 1972, 1977, 1982, 1987, 1992, 1997, …\n$ lifeExp   &lt;dbl&gt; 28.801, 30.332, 31.997, 34.020, 36.088, 38.438, 39.854, 40.8…\n$ pop       &lt;int&gt; 8425333, 9240934, 10267083, 11537966, 13079460, 14880372, 12…\n$ gdpPercap &lt;dbl&gt; 779.4453, 820.8530, 853.1007, 836.1971, 739.9811, 786.1134, …"
   },
   {
     "objectID": "posts/r-gapminder/index.html#continental-overview-in-2007",
@@ -67,7 +67,7 @@
     "href": "posts/python-gapminder/index.html#dataset-overview",
     "title": "Global Life Expectancy Trends (Python)",
     "section": "Dataset Overview",
-    "text": "Dataset Overview\nThe Gapminder dataset provides historical socio-economic metrics across countries and continents from 1952 to 2007. Key variables include life expectancy (lifeExp), population (pop), and GDP per capita (gdpPercap).\n\ngapminder.head()\n\n\n\n\n\n\n\n\ncountry\ncontinent\nyear\nlifeExp\npop\ngdpPercap\n\n\n\n\n0\nAfghanistan\nAsia\n1952\n28.801\n8425333\n779.445314\n\n\n1\nAfghanistan\nAsia\n1957\n30.332\n9240934\n820.853030\n\n\n2\nAfghanistan\nAsia\n1962\n31.997\n10267083\n853.100710\n\n\n3\nAfghanistan\nAsia\n1967\n34.020\n11537966\n836.197138\n\n\n4\nAfghanistan\nAsia\n1972\n36.088\n13079460\n739.981106"
+    "text": "Dataset Overview\nData Source: The Gapminder dataset\nLicense: Free to use under the Creative Commons Attribution 4.0 International (CC BY 4.0) license.\nThe Gapminder dataset provides historical socio-economic metrics across countries and continents from 1952 to 2007. Key variables include life expectancy (lifeExp), population (pop), and GDP per capita (gdpPercap).\n\ngapminder.head()\n\n\n\n\n\n\n\n\ncountry\ncontinent\nyear\nlifeExp\npop\ngdpPercap\n\n\n\n\n0\nAfghanistan\nAsia\n1952\n28.801\n8425333\n779.445314\n\n\n1\nAfghanistan\nAsia\n1957\n30.332\n9240934\n820.853030\n\n\n2\nAfghanistan\nAsia\n1962\n31.997\n10267083\n853.100710\n\n\n3\nAfghanistan\nAsia\n1967\n34.020\n11537966\n836.197138\n\n\n4\nAfghanistan\nAsia\n1972\n36.088\n13079460\n739.981106"
   },
   {
     "objectID": "posts/python-gapminder/index.html#regional-summary-2007",
@@ -95,35 +95,35 @@
     "href": "posts/bonus-interoperability/index.html",
     "title": "Python and R Interoperability Bonus",
     "section": "",
-    "text": "Configuring the reticulate package to target the project’s isolated uv virtual environment guarantees the code executes using project-specific dependencies rather than the global system installation.\n\nlibrary(reticulate)\n\nuse_virtualenv(\"../../.venv\", required = TRUE)"
+    "text": "Configuring the reticulate package to target the project’s isolated uv virtual environment guarantees the code executes using project-specific dependencies rather than the global system installation.\n\nlibrary(reticulate)\nuse_virtualenv(\"../../.venv\", required = TRUE)"
   },
   {
     "objectID": "posts/bonus-interoperability/index.html#pointing-reticulate-to-the-virtual-environment",
     "href": "posts/bonus-interoperability/index.html#pointing-reticulate-to-the-virtual-environment",
     "title": "Python and R Interoperability Bonus",
     "section": "",
-    "text": "Configuring the reticulate package to target the project’s isolated uv virtual environment guarantees the code executes using project-specific dependencies rather than the global system installation.\n\nlibrary(reticulate)\n\nuse_virtualenv(\"../../.venv\", required = TRUE)"
+    "text": "Configuring the reticulate package to target the project’s isolated uv virtual environment guarantees the code executes using project-specific dependencies rather than the global system installation.\n\nlibrary(reticulate)\nuse_virtualenv(\"../../.venv\", required = TRUE)"
   },
   {
     "objectID": "posts/bonus-interoperability/index.html#creating-data-in-r",
     "href": "posts/bonus-interoperability/index.html#creating-data-in-r",
     "title": "Python and R Interoperability Bonus",
     "section": "Creating Data in R",
-    "text": "Creating Data in R\nInitializing a baseline dataframe natively in R.\n\nr_data &lt;- data.frame(\n  id = 1:5,\n  score = c(85, 92, 78, 90, 88)\n)\nprint(r_data)\n\n  id score\n1  1    85\n2  2    92\n3  3    78\n4  4    90\n5  5    88"
+    "text": "Creating Data in R\nData Source: The Gapminder dataset\nLicense: Free to use under the Creative Commons Attribution 4.0 International (CC BY 4.0) license.\nWe will load a small sample natively in R to pass into Python.\n\nlibrary(gapminder)\n\n# Grab the first 5 rows of the dataset\nr_data &lt;- head(gapminder, 5)\nprint(r_data)\n\n# A tibble: 5 × 6\n  country     continent  year lifeExp      pop gdpPercap\n  &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;\n1 Afghanistan Asia       1952    28.8  8425333      779.\n2 Afghanistan Asia       1957    30.3  9240934      821.\n3 Afghanistan Asia       1962    32.0 10267083      853.\n4 Afghanistan Asia       1967    34.0 11537966      836.\n5 Afghanistan Asia       1972    36.1 13079460      740."
   },
   {
     "objectID": "posts/bonus-interoperability/index.html#reading-r-data-into-python",
     "href": "posts/bonus-interoperability/index.html#reading-r-data-into-python",
     "title": "Python and R Interoperability Bonus",
     "section": "Reading R Data into Python",
-    "text": "Reading R Data into Python\nAccessing the R environment via the r. object in Python. A new column is calculated and appended to the dataframe using pandas.\n\nimport pandas as pd\n\npython_df = r.r_data\npython_df['curved_score'] = python_df['score'] + 5\n\nprint(python_df)\n\n   id  score  curved_score\n0   1   85.0          90.0\n1   2   92.0          97.0\n2   3   78.0          83.0\n3   4   90.0          95.0\n4   5   88.0          93.0"
+    "text": "Reading R Data into Python\nAccessing the R environment via the r. object in Python. A new column calculating life expectancy in months is appended to the dataframe using pandas.\n\nimport pandas as pd\n\npython_df = r.r_data\npython_df['lifeExp_months'] = python_df['lifeExp'] * 12\n\nprint(python_df)\n\n       country continent  year  lifeExp       pop   gdpPercap  lifeExp_months\n0  Afghanistan      Asia  1952   28.801   8425333  779.445314         345.612\n1  Afghanistan      Asia  1957   30.332   9240934  820.853030         363.984\n2  Afghanistan      Asia  1962   31.997  10267083  853.100710         383.964\n3  Afghanistan      Asia  1967   34.020  11537966  836.197138         408.240\n4  Afghanistan      Asia  1972   36.088  13079460  739.981106         433.056"
   },
   {
     "objectID": "posts/bonus-interoperability/index.html#returning-python-data-back-to-r",
     "href": "posts/bonus-interoperability/index.html#returning-python-data-back-to-r",
     "title": "Python and R Interoperability Bonus",
     "section": "Returning Python Data back to R",
-    "text": "Returning Python Data back to R\nRetrieving the transformed object from the Python environment back into R using the py$ object.\n\nfinal_r_data &lt;- py$python_df\n\nprint(final_r_data)\n\n  id score curved_score\n1  1    85           90\n2  2    92           97\n3  3    78           83\n4  4    90           95\n5  5    88           93"
+    "text": "Returning Python Data back to R\nRetrieving the transformed object from the Python environment back into R using the py$ object.\n\nfinal_r_data &lt;- py$python_df\n\nprint(final_r_data)\n\n      country continent year lifeExp      pop gdpPercap lifeExp_months\n1 Afghanistan      Asia 1952  28.801  8425333  779.4453        345.612\n2 Afghanistan      Asia 1957  30.332  9240934  820.8530        363.984\n3 Afghanistan      Asia 1962  31.997 10267083  853.1007        383.964\n4 Afghanistan      Asia 1967  34.020 11537966  836.1971        408.240\n5 Afghanistan      Asia 1972  36.088 13079460  739.9811        433.056"
   },
   {
     "objectID": "about.html",
