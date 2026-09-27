@@ -107,6 +107,8 @@ This bar chart provides a direct visual comparison of median life expectancy acr
 #| warning: false
 #| message: false
 #| code-fold: false
+#| label: fig-continental-life-exp
+#| fig-cap: "Median life expectancy across the five continents in 2007."
 
 library(ggplot2)
 

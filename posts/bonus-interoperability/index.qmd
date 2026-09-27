@@ -72,6 +72,8 @@ To confirm the data remains fully functional for analysis after passing between 
 #| echo: true
 #| warning: false
 #| message: false
+#| label: fig-afghanistan-life-exp
+#| fig-cap: "Afghanistan life expectancy converted to months (1952-1972)."
 
 library(ggplot2)
 

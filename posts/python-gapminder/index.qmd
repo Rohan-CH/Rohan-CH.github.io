@@ -101,6 +101,8 @@ Every continent saw double-digit growth in average life expectancy over this 55-
 #| echo: true
 #| warning: false
 #| code-fold: false
+#| label: fig-regional-life-exp
+#| fig-cap: "Median life expectancy by continent in 2007."
 
 import matplotlib.pyplot as plt
 
