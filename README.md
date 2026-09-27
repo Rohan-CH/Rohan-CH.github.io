@@ -1,5 +1,8 @@
 # Rohan-CH.github.io
 
+* **Live Website:** [https://Rohan-CH.github.io](https://Rohan-CH.github.io)
+* **GitHub Repository:** [https://github.com/Rohan-CH/Rohan-CH.github.io](https://github.com/Rohan-CH/Rohan-CH.github.io)
+
 ## 1. What This Repository Is
 This repository contains the source code for a Quarto-based data science portfolio and blog. It features statistical analyses of the Gapminder dataset, demonstrating global life expectancy trends using both R and Python environments, as well as an interoperability demonstration.
 
@@ -42,3 +45,8 @@ Once the render command completes, the built HTML files will be deposited into t
 
 ## 5. Where the Data Comes From
 The data for these posts originates from the Gapminder dataset. The data files are not committed directly to this repository; instead, they are dynamically loaded via the `gapminder` R package and `gapminder` Python library during the render step. Because the environment restoration commands (`uv sync` and `renv::restore()`) must fetch these packages from external repositories, **an active internet connection is required** to build the site from a fresh clone.
+
+**Data Source:** The [Gapminder dataset](https://www.gapminder.org/data/)  
+**License:** Free to use under the [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/) license.
+
+**Declaration of AI Usage:** Google Gemini was used during the development of this project to assist with formatting and troubleshooting errors.
