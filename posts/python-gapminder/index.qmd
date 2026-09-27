@@ -12,27 +12,21 @@ date: 2026-09-23
   }
 </style>
 
-## Environment Verification
-
-Verifying the active Python executable to confirm this document is rendering against the isolated `uv` virtual environment rather than the global system installation.
-
-```{python}
-import sys
-print(sys.executable)
-import pandas as pd
-from gapminder import gapminder
-```
+This post analyzes global life expectancy and economic growth from 1952 to 2007. We will explore how different continents progressed over this 55-year span and visualize the regional health disparities present in the most recent survey year.
 
 ## Dataset Overview
 
 **Data Source:** The [Gapminder dataset](https://www.gapminder.org/data/)  
 **License:** Free to use under the [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/) license.
 
-The [Gapminder dataset](https://www.gapminder.org/data/) provides historical socio-economic metrics across countries and continents from 1952 to 2007. Key variables include life expectancy (`lifeExp`), population (`pop`), and GDP per capita (`gdpPercap`).
+The dataset provides historical socio-economic metrics across countries and continents. Key variables include life expectancy (`lifeExp`), population (`pop`), and GDP per capita (`gdpPercap`).
 
 ```{python}
 #| echo: true
 #| warning: false
+
+import pandas as pd
+from gapminder import gapminder
 
 gapminder.head()
 ```
@@ -59,6 +53,24 @@ recent_summary = (
 )
 
 recent_summary
+```
+
+## Top 5 Countries by Life Expectancy (2007)
+
+To see which specific nations are driving the upper boundaries of these regional medians, we can isolate the top five countries globally.
+
+```{python}
+#| echo: true
+#| code-fold: false
+
+top_countries = (
+    gapminder[gapminder["year"] == 2007]
+    .nlargest(5, "lifeExp")
+    [["country", "continent", "lifeExp", "gdpPercap"]]
+    .reset_index(drop=True)
+)
+
+top_countries
 ```
 
 ## 55-Year Progress (1952 vs 2007)
@@ -98,16 +110,15 @@ ax.set_title('Median Life Expectancy by Continent (2007)')
 ax.set_ylabel('Median Life Expectancy (years)')
 ax.set_xlabel('Continent')
 
+# Add value labels on top of the bars for clarity
 for i, v in enumerate(recent_summary['median_life_exp']):
     ax.text(i, v - 4, f"{v:.1f}", color='white', fontweight='bold', ha='center')
 
 plt.show()
 ```
 
-#### Key Findings:
+**Key Findings:**
 
-Leading Regions: Oceania and Europe rank highest, with median life expectancies surpassing 80 and 76 years, respectively. 
-
-The Middle Tier: The Americas and Asia cluster in the low 70s, reflecting the rapid developmental strides in Asia that closed the historical gap with the Americas.
-
-The Global Gap: Africa trails significantly with a median life expectancy of 52.9 years in 2007, a roughly 20-year deficit compared to the next lowest region.
+*   **Leading Regions:** Oceania and Europe rank highest, with median life expectancies surpassing 80 and 76 years, respectively. 
+*   **The Middle Tier:** The Americas and Asia cluster in the low 70s, reflecting the rapid developmental strides in Asia that closed the historical gap with the Americas.
+*   **The Global Gap:** Africa trails significantly with a median life expectancy of 52.9 years in 2007, a roughly 20-year deficit compared to the next lowest region.
