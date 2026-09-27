@@ -14,7 +14,7 @@ Before building the site, ensure you have the following installed on your system
 **Step A: Clone the repository**
 Run this in your shell to clone the project and navigate into the directory:
 ```bash
-git clone [https://github.com/Rohan-CH/Rohan-CH.github.io.git](https://github.com/Rohan-CH/Rohan-CH.github.io.git)
+git clone https://github.com/Rohan-CH/Rohan-CH.github.io.git
 cd Rohan-CH.github.io
 ```
 
