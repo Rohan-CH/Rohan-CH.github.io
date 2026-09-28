@@ -41,7 +41,9 @@ QUARTO_PYTHON=".venv/bin/python" quarto render
 ```
 
 ## 4. Where the Built Site Lands
-Once the render command completes, the built HTML files will be deposited into the `docs/` folder at the root of the project. To view the site locally, simply open `docs/index.html` in any web browser.
+Once the render command completes, the built HTML files will be deposited into the `docs/` folder at the root of the project. To view the site locally, you can use Quarto's built-in preview server by running:
+`QUARTO_PYTHON=".venv/bin/python" quarto preview`
+This will automatically open the site in your default web browser and live-update if you make any changes to the source files.
 
 ## 5. Where the Data Comes From
 The data for these posts originates from the Gapminder dataset. The data files are not committed directly to this repository; instead, they are dynamically loaded via the `gapminder` R package and `gapminder` Python library during the render step. Because the environment restoration commands (`uv sync` and `renv::restore()`) must fetch these packages from external repositories, **an active internet connection is required** to build the site from a fresh clone.
