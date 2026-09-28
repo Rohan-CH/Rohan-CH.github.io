@@ -42,7 +42,9 @@ QUARTO_PYTHON=".venv/bin/python" quarto render
 
 ## 4. Where the Built Site Lands
 Once the render command completes, the built HTML files will be deposited into the `docs/` folder at the root of the project. To view the site locally, you can use Quarto's built-in preview server by running:
+```bash
 `QUARTO_PYTHON=".venv/bin/python" quarto preview`
+```
 This will automatically open the site in your default web browser and live-update if you make any changes to the source files.
 
 ## 5. Where the Data Comes From
