@@ -32,7 +32,7 @@ Run this in your shell to use `renv` to install the R dependencies from the lock
 ```bash
 Rscript -e "renv::restore(prompt = FALSE)"
 ```
-*(Type `y` if prompted to proceed).*
+*(Type y if prompted to proceed).*
 
 **Step D: Render the Website**
 Run this in your shell to compile the Quarto website while forcing it to use the isolated Python virtual environment:
@@ -43,7 +43,7 @@ uv run quarto render
 ## 4. Where the Built Site Lands
 Once the render command completes, the built HTML files will be deposited into the `docs/` folder at the root of the project. To view the site locally, you can use Quarto's built-in preview server by running:
 ```bash
-uv run quarto preview`
+uv run quarto preview
 ```
 This will automatically open the site in your default web browser and live-update if you make any changes to the source files.
 
